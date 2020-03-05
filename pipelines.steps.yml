@@ -56,18 +56,4 @@ pipelines:
           inputSteps:
             - name: test_app
           outputResources:
-            - name: appl_build_info     
-
-
-      - name: promote_app_build
-        type: PromoteBuild
-        configuration:
-          targetRepository: tal-demo-pipelines
-          integrations:
-            - name: tals_artifactory_integration
-          inputSteps:
-            - name: publish_app_build            
-          inputResources:
-            - name: appl_build_info
-          outputResources:
-            - name: appl_promoted_build_info            
+            - name: appl_build_info               
