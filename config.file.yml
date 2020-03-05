@@ -1,0 +1,10 @@
+version: 1
+type: maven
+resolver:
+  serverId: tals_artifactory_integration
+  snapshotRepo: <maven repo>
+  releaseRepo: <maven repo>
+deployer:
+  serverId: tals_artifactory_integration
+  snapshotRepo: <maven repo>
+  releaseRepo: <maven repo>
