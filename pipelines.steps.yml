@@ -4,6 +4,7 @@ pipelines:
       - name: build_app
         type: MvnBuild
         configuration:
+          affinityGroup: buildGroup
           sourceLocation: .
           mvnCommand: clean install -f maths/pom.xml -Dmaven.test.skip=true
           configFileLocation: .
@@ -27,6 +28,7 @@ pipelines:
       - name: test_app
         type: MvnBuild
         configuration:
+          affinityGroup: buildGroup
           sourceLocation: .
           mvnCommand: clean test -f maths/pom.xml
           configFileLocation: .
