@@ -23,7 +23,7 @@ pipelines:
         execution:
           onStart:
             - ls -la
-            - cd maths 
+            - cd ~/maths 
             - mvn clean install -Dmaven.test.skip=true     
 
       - name: test_app
