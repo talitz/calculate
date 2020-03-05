@@ -7,7 +7,7 @@ pipelines:
           sourceLocation: .
           mvnCommand: clean install -Dmaven.test.skip=true
           configFileLocation: .
-          configFileName: mvn-art-config
+          configFileName: config.file.yml
           inputResources:
             - name: calculate_repository_resource
           integrations:
@@ -30,7 +30,7 @@ pipelines:
           sourceLocation: .
           mvnCommand: clean test
           configFileLocation: .
-          configFileName: mvn-art-config
+          configFileName: config.file.yml
           inputResources:
             - name: calculate_repository_resource
           integrations:
