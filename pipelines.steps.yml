@@ -23,7 +23,7 @@ pipelines:
         execution:
           onStart:
             - ls -l
-            - find maths -type f
+            - cd $res_srcRepository_resourcePath/maths
             - mvn clean install -Dmaven.test.skip=true     
 
       - name: test_app
