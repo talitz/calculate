@@ -15,11 +15,3 @@ resources:
       sourceArtifactory: tals_artifactory_integration
       buildName: calculate-demo
       buildNumber: 1
- 
-  # Build info for the promoted application
-  - name: appl_promoted_build_info
-    type: BuildInfo
-    configuration:
-      sourceArtifactory: tals_artifactory_integration
-      buildName: calculate-demo
-      buildNumber: 1
