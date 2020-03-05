@@ -9,16 +9,7 @@ pipelines:
           configFileLocation: .
           configFileName: mvn-art-config
           inputResources:
-            - name: be_gitRepo
-          integrations:
-            - name: myArtifactory
-          runtime:
-            type: image
-            image:
-              auto:
-                language: java
-                versions:
-                  - "11"
+            - name: talitz/calculate
         execution:
           onStart:
             - javac -version
