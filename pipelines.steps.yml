@@ -10,6 +10,8 @@ pipelines:
           configFileName: mvn-art-config
           inputResources:
             - name: talitz/calculate
+          integrations:
+            - name: tals_integration
         execution:
           onStart:
             - javac -version
