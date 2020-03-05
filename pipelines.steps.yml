@@ -22,6 +22,8 @@ pipelines:
                   - "8"
         execution:
           onStart:
+            - ls -la
+            - cd maths 
             - mvn clean install -Dmaven.test.skip=true     
 
       - name: test_app
