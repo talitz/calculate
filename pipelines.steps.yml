@@ -11,7 +11,8 @@ pipelines:
           inputResources:
             - name: calculate_repository_resource
           integrations:
-            - name: tals_integration
+            - name: tals_github_integration
+            - name: tals_artifactory_integration
         execution:
           onStart:
             - javac -version
