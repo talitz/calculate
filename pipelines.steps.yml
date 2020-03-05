@@ -36,6 +36,8 @@ pipelines:
           integrations:
             - name: tals_github_integration
             - name: tals_artifactory_integration
+          inputSteps:
+            - name: build_app
           runtime:
             type: image
             image:
@@ -52,7 +54,7 @@ pipelines:
         configuration:
           forceXrayScan: false
           inputSteps:
-            - name: build_app
+            - name: test_app
           outputResources:
             - name: appl_build_info     
 
@@ -63,6 +65,8 @@ pipelines:
           targetRepository: tal-demo-pipelines
           integrations:
             - name: tals_artifactory_integration
+          inputSteps:
+            - name: publish_app_build            
           inputResources:
             - name: appl_build_info
           outputResources:
