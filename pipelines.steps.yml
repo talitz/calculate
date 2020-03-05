@@ -22,6 +22,7 @@ pipelines:
                   - "8"
         execution:
           onStart:
+            - cd ~/$res_calculate_repository_resource_resourcePath
             - mvn clean install -Dmaven.test.skip=true     
 
       - name: test_app
