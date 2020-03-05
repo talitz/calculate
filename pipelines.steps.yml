@@ -40,6 +40,13 @@ pipelines:
             - name: tals_artifactory_integration
           inputSteps:
             - name: build_app
+          runtime:
+            type: image
+            image:
+              auto:
+                language: java
+                versions:
+                  - "8"
         execution:
           onStart:
             - cd $res_calculate_repository_resource_resourcePath/maths
