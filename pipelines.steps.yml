@@ -56,6 +56,6 @@ pipelines:
         configuration:
           forceXrayScan: true
           inputSteps:
-            - name: test_app
+            - name: build_app
           outputResources:
             - name: appl_build_info               
