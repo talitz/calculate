@@ -4,10 +4,10 @@ pipelines:
       - name: build_app
         type: MvnBuild
         configuration:
-          sourceLocation: maths
+          sourceLocation: .
           mvnCommand: clean install -Dmaven.test.skip=true
           configFileLocation: .
-          configFileName: pom.xml
+          configFileName: mvn-art-config
           inputResources:
             - name: calculate_repository_resource
           integrations:
