@@ -2,7 +2,7 @@ resources:
   - name: calculate_repository_resource
     type: GitRepo
     configuration:
-      gitProvider: tals_integration
+      gitProvider: tals_github_integration
       path: talitz/calculate
       branches:
         include: master
