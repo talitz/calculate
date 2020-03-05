@@ -22,8 +22,6 @@ pipelines:
                   - "8"
         execution:
           onStart:
-            - javac -version
-            - mvn --version     
             - mvn clean install -Dmaven.test.skip=true     
 
       - name: test
@@ -47,8 +45,6 @@ pipelines:
                   - "8"
         execution:
           onStart:
-            - javac -version
-            - mvn --version   
             - mvn clean test      
 
       - name: publish_app_build
