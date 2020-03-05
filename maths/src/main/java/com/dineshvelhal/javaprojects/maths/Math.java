@@ -11,7 +11,7 @@ package com.dineshvelhal.javaprojects.maths;
 public class Math 
 {
     public int add(int a, int b) {
-    	return a + b;
+    	return a + b + 1;
     }
     
     public int subtract(int a, int b) {
