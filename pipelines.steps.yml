@@ -1,7 +1,7 @@
 pipelines:
   - name: calculate_application
     steps:
-      - name: bld_backend
+      - name: build
         type: MvnBuild
         configuration:
           sourceLocation: .
@@ -23,4 +23,51 @@ pipelines:
         execution:
           onStart:
             - javac -version
-            - mvn --version          
+            - mvn --version     
+            - mvn clean install -Dmaven.test.skip=true     
+
+      - name: test
+        type: MvnBuild
+        configuration:
+          sourceLocation: .
+          mvnCommand: clean test
+          configFileLocation: .
+          configFileName: mvn-art-config
+          inputResources:
+            - name: calculate_repository_resource
+          integrations:
+            - name: tals_github_integration
+            - name: tals_artifactory_integration
+          runtime:
+            type: image
+            image:
+              auto:
+                language: java
+                versions:
+                  - "8"
+        execution:
+          onStart:
+            - javac -version
+            - mvn --version   
+            - mvn clean test      
+
+      - name: publish_app_build
+        type: PublishBuildInfo
+        configuration:
+          forceXrayScan: false
+          inputSteps:
+            - name: build_app
+          outputResources:
+            - name: appl_build_info     
+
+
+      - name: promote_app_build
+        type: PromoteBuild
+        configuration:
+          targetRepository: tal-demo-pipelines
+          integrations:
+            - name: tals_artifactory_integration
+          inputResources:
+            - name: appl_build_info
+          outputResources:
+            - name: appl_promoted_build_info            
