@@ -9,7 +9,7 @@ pipelines:
           configFileLocation: .
           configFileName: mvn-art-config
           inputResources:
-            - name: talitz/calculate
+            - name: calculate_repository_resource
           integrations:
             - name: tals_integration
         execution:

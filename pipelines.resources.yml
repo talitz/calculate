@@ -1,5 +1,5 @@
 resources:
-  - name: app
+  - name: calculate_repository_resource
     type: GitRepo
     configuration:
       gitProvider: tals_integration
