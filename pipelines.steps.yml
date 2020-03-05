@@ -12,6 +12,7 @@ pipelines:
             - name: calculate_repository_resource
           integrations:
             - name: tals_github_integration
+            - name: tals_artifactory_integration
           runtime:
             type: image
             image:
