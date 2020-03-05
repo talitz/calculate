@@ -23,7 +23,8 @@ pipelines:
         execution:
           onStart:
             - ls -l
-            - cd $res_srcRepository_resourcePath/maths
+            - cd $res_srcRepository_resourcePath
+            - ls -l
             - mvn clean install -Dmaven.test.skip=true     
 
       - name: test_app
