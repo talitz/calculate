@@ -4,8 +4,8 @@ pipelines:
       - name: build_app
         type: MvnBuild
         configuration:
-          sourceLocation: maths
-          mvnCommand: clean install -Dmaven.test.skip=true
+          sourceLocation: .
+          mvnCommand: clean install -f maths/pom.xml -Dmaven.test.skip=true
           configFileLocation: .
           configFileName: config.file.yml
           inputResources:
@@ -27,8 +27,8 @@ pipelines:
       - name: test_app
         type: MvnBuild
         configuration:
-          sourceLocation: maths
-          mvnCommand: clean test
+          sourceLocation: .
+          mvnCommand: clean test -f maths/pom.xml
           configFileLocation: .
           configFileName: config.file.yml
           inputResources:
