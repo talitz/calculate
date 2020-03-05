@@ -1,25 +1,25 @@
 pipelines:
   - name: calculate_application
-  steps:
-    - name: bld_backend
-      type: MvnBuild
-      configuration:
-        sourceLocation: .
-        mvnCommand: clean install -Dmaven.test.skip=true
-        configFileLocation: .
-        configFileName: mvn-art-config
-        inputResources:
-          - name: be_gitRepo
-        integrations:
-          - name: myArtifactory
-        runtime:
-          type: image
-          image:
-            auto:
-              language: java
-              versions:
-                - "11"
-      execution:
-        onStart:
-          - javac -version
-          - mvn --version          
+    steps:
+      - name: bld_backend
+        type: MvnBuild
+        configuration:
+          sourceLocation: .
+          mvnCommand: clean install -Dmaven.test.skip=true
+          configFileLocation: .
+          configFileName: mvn-art-config
+          inputResources:
+            - name: be_gitRepo
+          integrations:
+            - name: myArtifactory
+          runtime:
+            type: image
+            image:
+              auto:
+                language: java
+                versions:
+                  - "11"
+        execution:
+          onStart:
+            - javac -version
+            - mvn --version          
