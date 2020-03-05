@@ -1,4 +1,5 @@
 resources:
+  # Repository for deployment
   - name: calculate_repository_resource
     type: GitRepo
     configuration:
@@ -6,3 +7,19 @@ resources:
       path: talitz/calculate
       branches:
         include: master
+ 
+  # Build info for the application
+  - name: appl_build_info
+    type: BuildInfo
+    configuration:
+      sourceArtifactory: tals_artifactory_integration
+      buildName: calculate-demo
+      buildNumber: 1
+ 
+  # Build info for the promoted application
+  - name: appl_promoted_build_info
+    type: BuildInfo
+    configuration:
+      sourceArtifactory: tals_artifactory_integration
+      buildName: calculate-demo
+      buildNumber: 1
