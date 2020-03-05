@@ -1,22 +1,23 @@
 pipelines:
-  - name: calculate_pipeline
-    steps:
-    - name: Unit_Tests
-      type: Bash
-      configuration:
-        inputResources:
-          - name: app
-      execution:
-        onExecute:
-          - printenv
-          - mvn -f maths/pom.xml clean test
- 
-    - name: Build_Upload_Artifact
-      type: Bash
-      configuration:
-        inputSteps:
-          - name: step_1
-      execution:
-        onExecute:
-          - printenv
-          - mvn clean install -Dmaven.test.skip=true
+  - name: bld_backend
+    type: MvnBuild
+    configuration:
+      sourceLocation: .
+      mvnCommand: clean install -Dmaven.test.skip=true
+      configFileLocation: .
+      configFileName: mvn-art-config
+      inputResources:
+        - name: be_gitRepo
+      integrations:
+        - name: myArtifactory
+      runtime:
+        type: image
+        image:
+          auto:
+            language: java
+            versions:
+              - "11"
+    execution:
+      onStart:
+        - javac -version
+        - mvn --version          
