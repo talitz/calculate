@@ -4,9 +4,9 @@ pipelines:
       - name: build_app
         type: MvnBuild
         configuration:
-          sourceLocation: .
+          sourceLocation: maths
           mvnCommand: clean install -Dmaven.test.skip=true
-          configFileLocation: maths
+          configFileLocation: .
           configFileName: pom.xml
           inputResources:
             - name: calculate_repository_resource
@@ -22,9 +22,6 @@ pipelines:
                   - "8"
         execution:
           onStart:
-            - ls -l
-            - cd $res_srcRepository_resourcePath
-            - ls -l
             - mvn clean install -Dmaven.test.skip=true     
 
       - name: test_app
