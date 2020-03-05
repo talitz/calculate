@@ -23,7 +23,6 @@ pipelines:
         execution:
           onStart:
             - cd $res_calculate_repository_resource_resourcePath/maths
-            - mvn clean install -Dmaven.test.skip=true     
 
       - name: test_app
         type: MvnBuild
@@ -48,7 +47,7 @@ pipelines:
                   - "8"
         execution:
           onStart:
-            - mvn clean test      
+            - cd $res_calculate_repository_resource_resourcePath/maths
 
       - name: publish_app_build
         type: PublishBuildInfo
