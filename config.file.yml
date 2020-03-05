@@ -2,9 +2,9 @@ version: 1
 type: maven
 resolver:
   serverId: tals_artifactory_integration
-  snapshotRepo: <maven repo>
-  releaseRepo: <maven repo>
+  snapshotRepo: http://artifactory-eu.soleng-emea-staging.jfrog.team/artifactory/zteam-mvn-dev-local
+  releaseRepo: http://artifactory-eu.soleng-emea-staging.jfrog.team/artifactory/zteam-mvn-dev-local
 deployer:
   serverId: tals_artifactory_integration
-  snapshotRepo: <maven repo>
-  releaseRepo: <maven repo>
+  snapshotRepo: http://artifactory-eu.soleng-emea-staging.jfrog.team/artifactory/zteam-mvn-dev-local
+  releaseRepo: http://artifactory-eu.soleng-emea-staging.jfrog.team/artifactory/zteam-mvn-dev-local
