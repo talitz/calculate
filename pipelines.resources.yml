@@ -2,7 +2,7 @@ resources:
   - name: app
     type: GitRepo
     configuration:
-      gitProvider: myGitHub
+      gitProvider: tals_integration
       path: talitz/calculate
       branches:
         include: master
