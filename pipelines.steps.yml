@@ -1,0 +1,22 @@
+pipelines:
+  - name: calculate_pipeline
+    steps:
+    - name: Unit_Tests
+      type: Bash
+      configuration:
+        inputResources:
+          - name: app
+      execution:
+        onExecute:
+          - printenv
+          - mvn -f maths/pom.xml clean test
+ 
+    - name: Build_Upload_Artifact
+      type: Bash
+      configuration:
+        inputSteps:
+          - name: step_1
+      execution:
+        onExecute:
+          - printenv
+          - mvn clean install -Dmaven.test.skip=true
