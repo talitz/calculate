@@ -1,7 +1,7 @@
 pipelines:
   - name: calculate_application
     steps:
-      - name: build
+      - name: build_app
         type: MvnBuild
         configuration:
           sourceLocation: .
@@ -24,7 +24,7 @@ pipelines:
           onStart:
             - mvn clean install -Dmaven.test.skip=true     
 
-      - name: test
+      - name: test_app
         type: MvnBuild
         configuration:
           sourceLocation: .
