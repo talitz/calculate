@@ -4,7 +4,7 @@ pipelines:
       - name: build_app
         type: MvnBuild
         configuration:
-          sourceLocation: .
+          sourceLocation: /maths
           mvnCommand: clean install -Dmaven.test.skip=true
           configFileLocation: .
           configFileName: mvn-art-config
