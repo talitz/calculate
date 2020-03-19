@@ -8,18 +8,21 @@ on:
 jobs:
   build-jdk8:
     runs-on: ubuntu-latest
-    name: Build
+    name: Calculate - Build & Deploy
     steps:
     - uses: actions/checkout@v1
-    - uses: actions/cache@v1
-      with:
-        path: ~/.m2/repository
-        key: ${{ runner.os }}-maven-jdk8-${{ hashFiles('**/pom.xml') }}
-        restore-keys: |
-          ${{ runner.os }}-maven-jdk8-
-    - name: Set up JDK 1.8
+      
+    - name: Setup JDK 1.8
       uses: actions/setup-java@v1
       with:
         java-version: 1.8
-    - name: Build JDK 8 projects
+
+    - name: Setup JFrog CLI
+    - uses: jfrog/setup-jfrog-cli@v1
+      env:
+        JF_ARTIFACTORY_1: ${{ secrets.JF_ARTIFACTORY_SECRET_1 }}
+    - run:
+        jfrog rt ping
+
+    - name: Build
       run: mvn clean install -f maths/pom.xml
