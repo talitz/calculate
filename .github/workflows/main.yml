@@ -24,8 +24,8 @@ jobs:
     - run:
         jfrog rt ping
 
-    - name: Build
-      run: mvn clean install -f maths/pom.xml
+    - name: Build & Deploy
+      run: mvn clean deploy -f maths/pom.xml
       
     - name: Publish Build Information
       run: |
