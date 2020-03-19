@@ -3,8 +3,8 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <servers>
     <server>
-      <username>${{ secrets.ARTIFACTORY_USERNAME }}</username>
-      <password>${{ secrets.ARTIFACTORY_PASSWORD }}</password>
+      <username>${{secrets.ARTIFACTORY_USERNAME}}</username>
+      <password>${{secrets.ARTIFACTORY_PASSWORD}}</password>
       <id>central</id>
     </server>
     <server>
