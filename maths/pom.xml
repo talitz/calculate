@@ -22,7 +22,12 @@
           <url>https://tal.jfrog.io/artifactory/libs-release-local</url>
       </repository>
   </distributionManagement>
-  
+ <pluginRepositories>
+    <pluginRepository>
+      <id>central</id>
+      <url>https://tal.jfrog.io/artifactory/libs-release-local</url>
+    </pluginRepository>
+  </pluginRepositories>  
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
