@@ -31,7 +31,9 @@ jobs:
       run: mvn clean deploy -f maths/pom.xml -s maths/settings.xml
       
     - name: Publish Build Information
-      run: 
+      env:
+        JF_ARTIFACTORY_1: ${{ secrets.JF_ARTIFACTORY_SECRET_1 }}
+      run: |
         # Collect environment variables for the build
         jfrog rt bce
         # Collect VCS details from git and add them to the build
