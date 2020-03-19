@@ -31,7 +31,7 @@ jobs:
       run: mvn clean deploy -f maths/pom.xml -s maths/settings.xml
       
     - name: Publish Build Information
-      run: |
+      run: 
         # Collect environment variables for the build
         jfrog rt bce
         # Collect VCS details from git and add them to the build
