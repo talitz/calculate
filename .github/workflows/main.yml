@@ -18,7 +18,7 @@ jobs:
         java-version: 1.8
 
     - name: Setup JFrog CLI
-    - uses: jfrog/setup-jfrog-cli@v1
+      uses: jfrog/setup-jfrog-cli@v1
       env:
         JF_ARTIFACTORY_1: ${{ secrets.JF_ARTIFACTORY_SECRET_1 }}
     - run:
