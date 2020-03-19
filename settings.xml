@@ -3,13 +3,13 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <servers>
     <server>
-      <username>${security.currentUsername}</username>
-      <password>${security.getEscapedEncryptedPassword}</password>
+      <username>${{ secrets.ARTIFACTORY_USERNAME }}</username>
+      <password>${{ secrets.ARTIFACTORY_PASSWORD }}</password>
       <id>central</id>
     </server>
     <server>
-      <username>${security.currentUsername}</username>
-      <password>${security.getEscapedEncryptedPassword}</password>
+      <username>${{ secrets.ARTIFACTORY_USERNAME }}</username>
+      <password>${{ secrets.ARTIFACTORY_PASSWORD }}</password>
       <id>snapshots</id>
     </server>
   </servers>
