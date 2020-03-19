@@ -3,9 +3,9 @@ resources:
   - name: calculate_repository_resource
     type: GitRepo
     configuration:
-      gitProvider: tals_github_integration
+      gitProvider: tals_github_integration  
       path: talitz/calculate
-      branches:
+      branches: 
         include: master
  
   # Build info for the application
