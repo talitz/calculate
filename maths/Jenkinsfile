@@ -3,7 +3,7 @@ pipeline {
 	tools { 
         maven 'maven3.6' 
         jdk 'jdk8' 
-    }
+    } 
 	
     stages {
 		stage('Unit Tests') {
