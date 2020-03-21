@@ -30,8 +30,8 @@ jobs:
       env:
         ARTIFACTORY_USERNAME: ${{ secrets.ARTIFACTORY_USERNAME }}
         ARTIFACTORY_PASSWORD: ${{ secrets.ARTIFACTORY_PASSWORD }}
-        BUILD_NAME:  ${{ github.GITHUB_WORKFLOW }}
-        BUILD_NUMBER:  ${{ github.GITHUB_RUN_ID }}
+        BUILD_NAME:  ${{ GITHUB_WORKFLOW }}
+        BUILD_NUMBER:  ${{ GITHUB_RUN_ID }}
       run: mvn clean deploy -f maths/pom.xml -s maths/settings.xml -Dversion=1.0
       
     - name: Publish Build Information
