@@ -8,7 +8,7 @@ on:
 jobs: 
   build-jdk8:
     runs-on: ubuntu-latest
-    name: Calculate - Build & Deploy
+    name: Calculate - CI Job
     steps:
     - uses: actions/checkout@v1
          
@@ -21,8 +21,9 @@ jobs:
       uses: jfrog/setup-jfrog-cli@v1
       env:
         JF_ARTIFACTORY_1: ${{ secrets.JF_ARTIFACTORY_SECRET_1 }}
-    - run:
-        jfrog rt ping
+        
+    - name: Ping JFrog CLI
+      run: jfrog rt ping
 
     - name: Build & Deploy
       env:
@@ -31,8 +32,6 @@ jobs:
       run: mvn clean deploy -f maths/pom.xml -s maths/settings.xml
       
     - name: Publish Build Information
-      env:
-        JF_ARTIFACTORY_1: ${{ secrets.JF_ARTIFACTORY_SECRET_1 }}
       run: |
         # Collect environment variables for the build
         jfrog rt bce
