@@ -4,7 +4,7 @@ resources:
     type: GitRepo
     configuration:
       gitProvider: tals_github_integration  
-      path: talitz/calculate
+      path: talitz/calculate 
       branches: 
         include: master
  
