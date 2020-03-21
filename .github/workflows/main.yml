@@ -32,7 +32,7 @@ jobs:
         ARTIFACTORY_PASSWORD: ${{ secrets.ARTIFACTORY_PASSWORD }}
         BUILD_NAME:  ${GITHUB_WORKFLOW}
         BUILD_NUMBER:  ${GITHUB_SHA}
-      run: mvn clean deploy -f maths/pom.xml -s maths/settings.xml -Dversion=1.0
+      run: mvn clean deploy -f maths/pom.xml -s maths/settings.xml -Dversion=1.1
       
     - name: Publish Build Information
       run: |
