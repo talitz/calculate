@@ -13,19 +13,20 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.distribution.url>https://tal.jfrog.io/artifactory/libs-release-local;build.name=${buildName};build.number=${buildNumber}</project.distribution.url>
   </properties>
   
   <distributionManagement>
       <repository>
           <id>central</id>
           <name>tal-artifactory-primary-0-releases</name>
-          <url>https://tal.jfrog.io/artifactory/libs-release-local</url>
+          <url>${project.distribution.url}</url>
       </repository>
   </distributionManagement>
  <pluginRepositories>
     <pluginRepository>
       <id>central</id>
-      <url>https://tal.jfrog.io/artifactory/libs-release-local</url>
+      <url>${project.distribution.url}</url>
     </pluginRepository>
   </pluginRepositories>  
   <dependencies>
