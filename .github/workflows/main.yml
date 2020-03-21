@@ -1,4 +1,4 @@
-name: Calculate - CI Job
+name: calculate-ci-job
 on:
   push:
     branches: [ master ]
