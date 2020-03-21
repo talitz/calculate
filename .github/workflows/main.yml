@@ -30,7 +30,7 @@ jobs:
       env:
         ARTIFACTORY_USERNAME: ${{ secrets.ARTIFACTORY_USERNAME }}
         ARTIFACTORY_PASSWORD: ${{ secrets.ARTIFACTORY_PASSWORD }}
-      run: mvn clean deploy -f maths/pom.xml -s maths/settings.xml
+      run: mvn clean deploy -f maths/pom.xml -s maths/settings.xml -Dversion=1.0
       
     - name: Publish Build Information
       run: |
