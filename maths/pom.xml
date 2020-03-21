@@ -4,7 +4,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.dineshvelhal.javaprojects</groupId>
-  <artifactId>maths</artifactId>
+  <artifactId>maths-app</artifactId>
   <version>1.7</version>
   <packaging>jar</packaging>
 
