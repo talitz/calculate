@@ -14,7 +14,7 @@
     </server>
   </servers>
   <profiles>
-    <profile>
+    <profile> 
       <repositories>
         <repository>
           <snapshots>
