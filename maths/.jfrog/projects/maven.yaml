@@ -1,0 +1,10 @@
+version: 1
+type: maven
+resolver:
+  serverId: tal-personal-arti
+  snapshotRepo: libs-release
+  releaseRepo: libs-release
+deployer:
+  serverId: tal-personal-arti
+  snapshotRepo: libs-release
+  releaseRepo: libs-release
