@@ -29,7 +29,8 @@ jobs:
     - name: Build & Deploy
       run: |
         jfrog rt mvnc 
-        jfrog rt mvn clean install -f maths/pom.xml
+        cd maths
+        jfrog rt mvn clean install
 
     - name: Publish Build Information
       run: |
