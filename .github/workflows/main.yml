@@ -28,7 +28,7 @@ jobs:
 
     - name: Build & Deploy
       run: |
-        jfrog rt mvnc 
+        #jfrog rt mvnc 
         cd maths
         jfrog rt mvn clean install
 
