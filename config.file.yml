@@ -3,6 +3,6 @@ type: maven
 resolver:
   serverId: tals_artifactory_integration
 deployer:  
-  serverId: tals_artifactory_integration
+  serverId: tals_artifactory_integration 
   snapshotRepo: calculate-demo 
   releaseRepo: calculate-demo 
