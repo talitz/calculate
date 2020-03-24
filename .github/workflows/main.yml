@@ -45,4 +45,4 @@ jobs:
         
     - name: Build Promotion
       run: |
-        jfrog rt bpr libs-release-staging
+        jfrog rt bpr is-checksum-really-work-local
