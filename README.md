@@ -1,4 +1,4 @@
-# Calculate - Experiments with GitHub Actions & JFrog Pipelines
+# Calculate - Experiments with GitHub Actions
 A tiny repo for running small experiments in CI/CD
 
 - Contains a tiny maven project
