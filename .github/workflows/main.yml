@@ -4,6 +4,8 @@ on:
     branches: [ master ]
   pull_request:   
     branches: [ master ]
+  schedule:
+    - cron:  '0 1 * * *'
      
 jobs: 
   build-jdk8:
@@ -45,4 +47,4 @@ jobs:
         
     - name: Build Promotion
       run: |
-        jfrog rt calculate-ci-job ${GITHUB_SHA} bpr libs-release-staging
+        jfrog rt calculate-ci-job ${{github.GITHUB_SHA}} bpr libs-release-staging
