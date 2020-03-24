@@ -47,4 +47,4 @@ jobs:
         
     - name: Build Promotion
       run: |
-        jfrog rt calculate-ci-job ${{github.GITHUB_SHA}} bpr libs-release-staging
+        jfrog rt calculate-ci-job ${{github.GITHUB_SHA}} libs-release-staging
