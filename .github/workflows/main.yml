@@ -47,7 +47,11 @@ jobs:
         jfrog rt bag
         # Publish build info
         jfrog rt bp        
-
+        
+    - name: Xray Scan
+      run: |
+        jfrog rt bs
+        
     - name: Build Promotion
       run: |
         jfrog rt bpr libs-release-staging
