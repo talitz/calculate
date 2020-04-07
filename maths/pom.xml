@@ -6,7 +6,7 @@
   <groupId>com.dineshvelhal.javaprojects</groupId>
   <artifactId>maths-app</artifactId>
   <version>4.3</version>
-  <packaging>jar</packaging>
+  <packaging>jar</packaging> 
 
   <name>maths</name>
   <url>http://maven.apache.org</url>
