@@ -6,3 +6,4 @@ deployer:
   serverId: tals_artifactory_integration  
   snapshotRepo: calculate-demo   
   releaseRepo: calculate-demo     
+ 
