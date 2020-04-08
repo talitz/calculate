@@ -13,7 +13,7 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <project.distribution.url>https://tal.jfrog.io/artifactory/libs-release-local;artifact.maturity=dev</project.distribution.url>
+    <project.distribution.url>https://artifactory-eu.soleng-emea-staging.jfrog.team/artifactory/libs-release-local;artifact.maturity=dev</project.distribution.url>
   </properties>
   
   <distributionManagement>
