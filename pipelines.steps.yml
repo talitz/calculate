@@ -1,6 +1,6 @@
 pipelines:
   - name: calculate_application
-    steps: 
+    steps:  
       - name: build_app
         type: MvnBuild
         configuration:
