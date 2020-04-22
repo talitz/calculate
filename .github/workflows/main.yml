@@ -9,8 +9,10 @@ on:
       
 jobs: 
   build-jdk8:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
     strategy:
+     max-parallel: 3
+     fail-fast: false
      matrix:
        os: [ubuntu-16.04, macOS-latest, windows-latest]
           
