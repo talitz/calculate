@@ -14,7 +14,7 @@ jobs:
      max-parallel: 3
      fail-fast: false
      matrix:
-       os: [ubuntu-18.04, macOS-latest, windows-latest]
+       os: [ubuntu-latest, macOS-latest, windows-latest]
           
     name: calculate-ci-job
     steps:
@@ -30,6 +30,7 @@ jobs:
       uses: jfrog/setup-jfrog-cli@v1
       env:
         JF_ARTIFACTORY_1: ${{ secrets.JF_ARTIFACTORY_SECRET_1 }}
+        M2_HOME: /usr/local/apache-maven/apache-maven-3.1.1 
         
     - name: Ping JFrog CLI
       run: jfrog rt ping
