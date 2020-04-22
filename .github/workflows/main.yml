@@ -30,7 +30,7 @@ jobs:
       uses: jfrog/setup-jfrog-cli@v1
       env:
         JF_ARTIFACTORY_1: ${{ secrets.JF_ARTIFACTORY_SECRET_1 }}
-        M2_HOME: /usr/local/apache-maven/apache-maven-3.1.1 
+        M2_HOME: /usr/local/apache-maven/apache-maven-3.6.3 
         
     - name: Ping JFrog CLI
       run: jfrog rt ping
