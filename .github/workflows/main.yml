@@ -15,7 +15,7 @@ jobs:
      fail-fast: false
      #GitHub-hosted runners
      matrix:
-       os: [ubuntu-latest, windows-latest, macos-latest]
+       os: [ubuntu-latest, windows-latest]
           
     name: calculate-ci-job
     steps:
@@ -39,8 +39,6 @@ jobs:
     - name: Build & Deploy
       run: |
         cd maths && jfrog rt mvn clean install
-      env:
-        M2_HOME: /usr/local/apache-maven/apache-maven-3.6.3 
         
     - name: Publish Build Information
       run: |
