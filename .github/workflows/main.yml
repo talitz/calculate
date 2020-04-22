@@ -36,7 +36,7 @@ jobs:
 
     - name: Build & Deploy
       run: |
-        cd maths && jfrog rt mvn clean install -Dartifactory.publish.artifacts=true
+        cd maths && jfrog rt mvn clean install
 
     - name: Publish Build Information
       run: |
