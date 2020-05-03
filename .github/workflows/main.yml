@@ -37,7 +37,9 @@ jobs:
       run: jfrog rt ping
 
     - name: Create Feature Repository
-      run: jfrog rt rc local-repo-template.json --vars key1=auto-cli-${{ github.GITHUB_REF }}
+      run: |
+        ls
+        jfrog rt rc local-repo-template.json --vars key1=auto-cli-${{ github.ref }}
       
     - name: Build & Deploy
       run: |
