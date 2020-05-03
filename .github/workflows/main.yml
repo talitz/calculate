@@ -39,7 +39,8 @@ jobs:
     - name: Create Feature Repository
       run: |
         ls
-        jfrog rt rc local-repo-template.json --vars key1=auto-cli-${{ github.ref }}
+        echo ${{ github.ref }}
+        jfrog rt rc local-repo-template.json --vars key1=auto-cli-test
       
     - name: Build & Deploy
       run: |
