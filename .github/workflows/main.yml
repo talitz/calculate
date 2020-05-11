@@ -1,4 +1,5 @@
 name: calculate-ci-job
+on: push
 jobs: 
   build-jdk8:
     runs-on: ${{ matrix.os }}
