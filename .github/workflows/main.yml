@@ -1,7 +1,7 @@
 name: calculate-ci-job
 on: push
 env:
-  repository: libs-release-local
+  repository: libs-release
 jobs: 
   build-jdk8:
     runs-on: ${{ matrix.os }}
