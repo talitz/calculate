@@ -35,16 +35,16 @@ jobs:
     - if: github.ref != 'refs/heads/master'
       name: Feature Branch Repository Creation
       run: |
-        echo ${GITHUB_REF##*/}
-        echo ${GITHUB_HEAD_REF##*/}
-        echo ${GITHUB_BASE_REF##*/}
+        echo ${GITHUB_REF}
+        echo ${GITHUB_HEAD_REF}
+        echo ${GITHUB_BASE_REF}
         echo '::set-env name=repository::$(echo ${GITHUB_REF##*/})'
         jfrog rt rc local-repo-template.json --vars key1=$repository
 
     - if: ${{ failure() }}
       name: Feature Branch Repository Update
       run: |
-        echo '::set-env name=repository::${GITHUB_REF##*/}'
+        echo '::set-env name=repository::$(echo ${GITHUB_REF##*/})'
 
     # if pushed from a master branch, should delete the proper repository in artifactory
     - if: github.ref == 'refs/heads/master'
@@ -52,7 +52,8 @@ jobs:
       run: |
         echo "$(echo ${GITHUB_REF##*/})" 
       
-    - name: Build & Deploy
+    - if: always()
+      name: Build & Deploy
       run: |
         cd maths && jfrog rt mvn clean install -Dproject.repository.name=$repository
         
