@@ -58,9 +58,9 @@ jobs:
       name: Build & Deploy
       run: |
         echo $repository
-        cd maths && jfrog rt mvn clean install -Dproject.repository.name=$repository
+        cd maths && jfrog rt mvn clean install -Dproject.repository.name=${repository}
         
-    - if: always()
+    - if: github.ref == 'refs/heads/master'
       name: Publish Build Information
       run: |
         # Collect environment variables for the build
@@ -70,12 +70,12 @@ jobs:
         # Publish build info
         jfrog rt bp       
         
-    - if: always()
+    - if: github.ref == 'refs/heads/master'
       name: Xray Scan
       run: |
         jfrog rt bs
         
-    - if: always()
+    - if: github.ref == 'refs/heads/master'
       name: Build Promotion
       run: |
         jfrog rt bpr calculate-ci-job ${{ github.sha }} libs-release-staging --props=artifact.maturity=staging
