@@ -1,5 +1,5 @@
 name: calculate-ci-job
-on: 
+on:  
   push:
     branches: [ master ]
   pull_request:   
