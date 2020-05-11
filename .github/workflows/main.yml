@@ -13,9 +13,9 @@ jobs:
     strategy:
      max-parallel: 3
      fail-fast: false
-     #GitHub-hosted runners
+     #GitHub-hosted runners, possible to add: windows-latest
      matrix:
-       os: [ubuntu-latest, windows-latest]
+       os: [ubuntu-latest]
           
     name: calculate-ci-job
     steps:
