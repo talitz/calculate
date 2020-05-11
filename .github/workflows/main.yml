@@ -33,14 +33,14 @@ jobs:
     - if: github.ref != 'refs/heads/master'
       name: Feature Branch Repository Creation
       run: |
-        echo "::set-env name=BRANCH::$(echo ${GITHUB_REF##*/})" 
+        echo "$(echo ${GITHUB_REF##*/})" 
         jfrog rt rc local-repo-template.json --vars key1=auto-cli-test
 
     # if pushed from a master branch, should delete the proper repository in artifactory
     - if: github.ref == 'refs/heads/master'
       name: Feature Branch Repository Deletion
       run: |
-        echo "::set-env name=BRANCH::$(echo ${GITHUB_REF##*/})" 
+        echo "$(echo ${GITHUB_REF##*/})" 
       
     - name: Build & Deploy
       run: |
