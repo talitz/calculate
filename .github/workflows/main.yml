@@ -1,12 +1,4 @@
 name: calculate-ci-job
-on:  
-  push:
-    branches: [ master ]
-  pull_request:   
-    branches: [ master ]
-  schedule: 
-    - cron:  '0 1 * * *'
-        
 jobs: 
   build-jdk8:
     runs-on: ${{ matrix.os }}
