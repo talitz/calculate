@@ -35,11 +35,11 @@ jobs:
         
     - name: Ping JFrog CLI
       run: jfrog rt ping
-
-    - name: Create Feature Repository
+      
+    - if: github.ref != 'refs/heads/master'
+      name: Create Feature Repository
       run: |
-        ls
-        echo ${{ github.ref }}
+        echo "::set-env name=BRANCH::$(echo ${GITHUB_REF##*/})" 
         jfrog rt rc local-repo-template.json --vars key1=auto-cli-test
       
     - name: Build & Deploy
