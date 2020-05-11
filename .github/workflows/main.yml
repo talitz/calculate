@@ -38,13 +38,13 @@ jobs:
         echo ${{ GITHUB.REF }}
         echo ${{ GITHUB.HEAD_REF }}
         echo ${{ GITHUB.BASE_REF }}
-        echo '::set-env name=repository::is-this-really-changing'
+        echo '::set-env name=repository::${GITHUB_REF##*/}'
         jfrog rt rc local-repo-template.json --vars key1=$repository
 
     - if: ${{ failure() }}
       name: Feature Branch Repository Update
       run: |
-        echo '::set-env name=repository::is-this-really-changing'
+        echo '::set-env name=repository::${GITHUB_REF##*/}'
         echo $repository
 
     # if pushed from a master branch, should delete the proper repository in artifactory
