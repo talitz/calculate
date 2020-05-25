@@ -35,24 +35,21 @@ jobs:
         
     - name: Ping JFrog CLI
       run: jfrog rt ping
-      
-#    - name: Extract Environment variables
-#      uses: franzdiebold/github-env-vars-action@v1.0.0
 
     # if pushed from a feature branch, should create a proper repository in artifactory for that  
-    - if: github.ref != 'refs/heads/master'
-      name: Feature Branch Repository Creation
+    - name: Feature Branch Repository Creation
       run: |
         echo "::set-env name=repository::$(echo ${GITHUB_REF#refs/heads/} | sed 's/\//_/g')"
         echo $repository
         jfrog rt rc local-repo-template.json --vars key1=$repository
         jfrog rt rc virtual-repo-template.json --vars key1=$repository
 
-    - if: ${{ failure() }}
+    - if: always()
       name: Feature Branch Repository Update
       run: |
         echo "::set-env name=repository::$(echo ${GITHUB_REF#refs/heads/} | sed 's/\//_/g')"
         echo $repository
+        jfrog rt mvnc --repo-resolve-releases=auto-cli-virtual-$repository --repo-resolve-snapshots=auto-cli-virtual-$repository --repo-deploy-releases=auto-cli-virtual-$repository --repo-deploy-snapshots=auto-cli-virtual-$repository
 
     # if pushed from a master branch, should delete the proper repository in artifactory
     - if: always()
@@ -65,9 +62,9 @@ jobs:
       run: |
         echo $repository
         cd maths
-        jfrog rt mvn -Dproject.repository.name=auto-cli-virtual-lirans-feature clean install
+        jfrog mvn clean install
         
-    - if: github.ref == 'refs/heads/master'
+    - if: always()
       name: Publish Build Information
       run: |
         # Collect environment variables for the build
@@ -77,12 +74,7 @@ jobs:
         # Publish build info
         jfrog rt bp       
         
-    - if: github.ref == 'refs/heads/master'
+    - if: always()
       name: Xray Scan
       run: |
         jfrog rt bs
-        
-    - if: github.ref == 'refs/heads/master'
-      name: Build Promotion
-      run: |
-        jfrog rt bpr calculate-ci-job ${{ github.sha }} libs-release-staging --props=artifact.maturity=staging
