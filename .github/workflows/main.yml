@@ -13,9 +13,9 @@ jobs:
     strategy:
      max-parallel: 3
      fail-fast: false
-     #GitHub-hosted runners
+     #GitHub-hosted runners, possible to add: windows-latest
      matrix:
-       os: [ubuntu-latest, windows-latest]
+       os: [ubuntu-latest]
           
     name: calculate-ci-job
     steps:
@@ -40,20 +40,33 @@ jobs:
     - if: github.ref != 'refs/heads/master'
       name: Feature Branch Repository Creation
       run: |
-        echo "::set-env name=BRANCH::$(echo ${GITHUB_REF##*/})" 
-        jfrog rt rc local-repo-template.json --vars key1=auto-cli-test
+        echo ${{ GITHUB.REF }}
+        echo ${{ GITHUB.HEAD_REF }}
+        echo ${{ GITHUB.BASE_REF }}
+        echo "::set-env name=repository::$(echo ${GITHUB_REF#refs/heads/} | sed 's/\//_/g')"
+        jfrog rt rc local-repo-template.json --vars key1=$repository
+        jfrog rt rc virtual-repo-template.json --vars key1=$repository
+
+    - if: ${{ failure() }}
+      name: Feature Branch Repository Update
+      run: |
+        echo "::set-env name=repository::$(echo ${GITHUB_REF#refs/heads/} | sed 's/\//_/g')"
+        echo $repository
 
     # if pushed from a master branch, should delete the proper repository in artifactory
     - if: github.ref == 'refs/heads/master'
       name: Feature Branch Repository Deletion
       run: |
-        echo "::set-env name=BRANCH::$(echo ${GITHUB_REF##*/})" 
-      
-    - name: Build & Deploy
+        echo "$(echo ${GITHUB_REF##*/})" 
+    
+    - if: always()
+      name: Build & Deploy
       run: |
-        cd maths && jfrog rt mvn clean install
+        echo $repository
+        cd maths && jfrog rt mvn -Dproject.repository.name=${repository} clean install
         
-    - name: Publish Build Information
+    - if: github.ref == 'refs/heads/master'
+      name: Publish Build Information
       run: |
         # Collect environment variables for the build
         jfrog rt bce
@@ -62,10 +75,12 @@ jobs:
         # Publish build info
         jfrog rt bp       
         
-    - name: Xray Scan
+    - if: github.ref == 'refs/heads/master'
+      name: Xray Scan
       run: |
         jfrog rt bs
         
-    - name: Build Promotion
+    - if: github.ref == 'refs/heads/master'
+      name: Build Promotion
       run: |
         jfrog rt bpr calculate-ci-job ${{ github.sha }} libs-release-staging --props=artifact.maturity=staging
