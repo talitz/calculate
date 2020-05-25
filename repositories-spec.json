@@ -1,0 +1,10 @@
+{
+    "files": [
+     {
+        "pattern": "auto-cli-*",
+        "sortBy": ["updated"],
+        "sortOrder": "desc",
+        "limit": 1
+     }
+    ]
+}

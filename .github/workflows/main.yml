@@ -57,7 +57,11 @@ jobs:
     - if: always()
       name: Feature Branch Repository Deletion
       run: |
-        echo $repository
+        # Extract all the repositories
+        jfrog rt curl -XGET /api/repositories > repositories_list.json
+        
+        # Filter the repositories created automatically by the CI process
+        cat repositories_list.json | jq '[.[] | .key | select(test("auto-cli"))]'
     
     - if: always()
       name: Build & Deploy
