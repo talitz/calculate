@@ -1,0 +1,6 @@
+{
+   "key":"name",
+   "packageType":"maven",
+   "rclass":"virtual",
+   "repositories":"jcenter"
+}
