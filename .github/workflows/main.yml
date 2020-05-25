@@ -64,7 +64,7 @@ jobs:
         cat all_repositories_list.json | jq '[.[] | .key | select(test("auto-cli"))]' > auto_created_repositories.json
 
         jq -c '.[]' auto_created_repositories.json | while read i; do
-          jfrog rt s --spec repositories-spec.json --spec-vars="key1=$i"
+          jfrog rt s --spec repositories-spec.json --spec-vars='key1=$i'
         done
     
     - if: always()

@@ -1,0 +1,319 @@
+[ {
+  "key" : "auto-cli-",
+  "description" : "",
+  "type" : "LOCAL",
+  "url" : "https://tal.jfrog.io/artifactory/auto-cli-",
+  "packageType" : "Maven"
+}, {
+  "key" : "auto-cli-local-",
+  "description" : "",
+  "type" : "LOCAL",
+  "url" : "https://tal.jfrog.io/artifactory/auto-cli-local-",
+  "packageType" : "Maven"
+}, {
+  "key" : "auto-cli-local-auto-cli-local-simona-queen-feature",
+  "description" : "",
+  "type" : "LOCAL",
+  "url" : "https://tal.jfrog.io/artifactory/auto-cli-local-auto-cli-local-simona-queen-feature",
+  "packageType" : "Maven"
+}, {
+  "key" : "auto-cli-local-is-this-working",
+  "description" : "",
+  "type" : "LOCAL",
+  "url" : "https://tal.jfrog.io/artifactory/auto-cli-local-is-this-working",
+  "packageType" : "Maven"
+}, {
+  "key" : "auto-cli-local-lirans-feature",
+  "description" : "",
+  "type" : "LOCAL",
+  "url" : "https://tal.jfrog.io/artifactory/auto-cli-local-lirans-feature",
+  "packageType" : "Maven"
+}, {
+  "key" : "auto-cli-local-lirans-featurea",
+  "description" : "",
+  "type" : "LOCAL",
+  "url" : "https://tal.jfrog.io/artifactory/auto-cli-local-lirans-featurea",
+  "packageType" : "Maven"
+}, {
+  "key" : "auto-cli-local-tal-feature-branch",
+  "description" : "",
+  "type" : "LOCAL",
+  "url" : "https://tal.jfrog.io/artifactory/auto-cli-local-tal-feature-branch",
+  "packageType" : "Maven"
+}, {
+  "key" : "auto-cli-local-this-is-my-test-feature-1",
+  "description" : "",
+  "type" : "LOCAL",
+  "url" : "https://tal.jfrog.io/artifactory/auto-cli-local-this-is-my-test-feature-1",
+  "packageType" : "Maven"
+}, {
+  "key" : "auto-cli-tal-feature-branch",
+  "description" : "",
+  "type" : "LOCAL",
+  "url" : "https://tal.jfrog.io/artifactory/auto-cli-tal-feature-branch",
+  "packageType" : "Maven"
+}, {
+  "key" : "auto-cli-test",
+  "description" : "",
+  "type" : "LOCAL",
+  "url" : "https://tal.jfrog.io/artifactory/auto-cli-test",
+  "packageType" : "Maven"
+}, {
+  "key" : "auto-cli-test-1",
+  "description" : "",
+  "type" : "LOCAL",
+  "url" : "https://tal.jfrog.io/artifactory/auto-cli-test-1",
+  "packageType" : "Maven"
+}, {
+  "key" : "auto-first-feature",
+  "description" : "",
+  "type" : "LOCAL",
+  "url" : "https://tal.jfrog.io/artifactory/auto-first-feature",
+  "packageType" : "Maven"
+}, {
+  "key" : "auto-local-",
+  "description" : "",
+  "type" : "LOCAL",
+  "url" : "https://tal.jfrog.io/artifactory/auto-local-",
+  "packageType" : "Maven"
+}, {
+  "key" : "auto-local-tal-feature-branch",
+  "description" : "",
+  "type" : "LOCAL",
+  "url" : "https://tal.jfrog.io/artifactory/auto-local-tal-feature-branch",
+  "packageType" : "Maven"
+}, {
+  "key" : "auto-second-feature",
+  "description" : "",
+  "type" : "LOCAL",
+  "url" : "https://tal.jfrog.io/artifactory/auto-second-feature",
+  "packageType" : "Maven"
+}, {
+  "key" : "auto-third-feature",
+  "description" : "",
+  "type" : "LOCAL",
+  "url" : "https://tal.jfrog.io/artifactory/auto-third-feature",
+  "packageType" : "Maven"
+}, {
+  "key" : "cocoapods-local",
+  "type" : "LOCAL",
+  "url" : "https://tal.jfrog.io/artifactory/cocoapods-local",
+  "packageType" : "CocoaPods"
+}, {
+  "key" : "conan-local",
+  "type" : "LOCAL",
+  "url" : "https://tal.jfrog.io/artifactory/conan-local",
+  "packageType" : "Conan"
+}, {
+  "key" : "conda-local",
+  "type" : "LOCAL",
+  "url" : "https://tal.jfrog.io/artifactory/conda-local",
+  "packageType" : "Conda"
+}, {
+  "key" : "cran-local",
+  "type" : "LOCAL",
+  "url" : "https://tal.jfrog.io/artifactory/cran-local",
+  "packageType" : "CRAN"
+}, {
+  "key" : "debian-local",
+  "type" : "LOCAL",
+  "url" : "https://tal.jfrog.io/artifactory/debian-local",
+  "packageType" : "Debian"
+}, {
+  "key" : "docker-local",
+  "type" : "LOCAL",
+  "url" : "https://tal.jfrog.io/artifactory/docker-local",
+  "packageType" : "Docker"
+}, {
+  "key" : "fuck-eli-feature",
+  "description" : "",
+  "type" : "LOCAL",
+  "url" : "https://tal.jfrog.io/artifactory/fuck-eli-feature",
+  "packageType" : "Maven"
+}, {
+  "key" : "libs-release-local",
+  "type" : "LOCAL",
+  "url" : "https://tal.jfrog.io/artifactory/libs-release-local",
+  "packageType" : "Maven"
+}, {
+  "key" : "libs-release-staging",
+  "description" : "Pre production environment.",
+  "type" : "LOCAL",
+  "url" : "https://tal.jfrog.io/artifactory/libs-release-staging",
+  "packageType" : "Maven"
+}, {
+  "key" : "libs-snapshot-local",
+  "type" : "LOCAL",
+  "url" : "https://tal.jfrog.io/artifactory/libs-snapshot-local",
+  "packageType" : "Maven"
+}, {
+  "key" : "lirans-feature",
+  "description" : "",
+  "type" : "LOCAL",
+  "url" : "https://tal.jfrog.io/artifactory/lirans-feature",
+  "packageType" : "Maven"
+}, {
+  "key" : "npm-local",
+  "type" : "LOCAL",
+  "url" : "https://tal.jfrog.io/artifactory/npm-local",
+  "packageType" : "Npm"
+}, {
+  "key" : "opkg-local",
+  "type" : "LOCAL",
+  "url" : "https://tal.jfrog.io/artifactory/opkg-local",
+  "packageType" : "Opkg"
+}, {
+  "key" : "tal-test-auto-local-",
+  "description" : "",
+  "type" : "LOCAL",
+  "url" : "https://tal.jfrog.io/artifactory/tal-test-auto-local-",
+  "packageType" : "Maven"
+}, {
+  "key" : "tal-test-auto-local-tal-feature-branch",
+  "description" : "",
+  "type" : "LOCAL",
+  "url" : "https://tal.jfrog.io/artifactory/tal-test-auto-local-tal-feature-branch",
+  "packageType" : "Maven"
+}, {
+  "key" : "tals-feature",
+  "description" : "",
+  "type" : "LOCAL",
+  "url" : "https://tal.jfrog.io/artifactory/tals-feature",
+  "packageType" : "Maven"
+}, {
+  "key" : "this-is-my-test-feature",
+  "description" : "",
+  "type" : "LOCAL",
+  "url" : "https://tal.jfrog.io/artifactory/this-is-my-test-feature",
+  "packageType" : "Maven"
+}, {
+  "key" : "this-is-my-test-feature-1",
+  "description" : "",
+  "type" : "LOCAL",
+  "url" : "https://tal.jfrog.io/artifactory/this-is-my-test-feature-1",
+  "packageType" : "Maven"
+}, {
+  "key" : "bintray-docker-remote",
+  "type" : "REMOTE",
+  "url" : "https://docker.bintray.io",
+  "packageType" : "Docker"
+}, {
+  "key" : "cocoapods-remote",
+  "type" : "REMOTE",
+  "url" : "https://github.com/",
+  "packageType" : "CocoaPods"
+}, {
+  "key" : "conan-remote",
+  "type" : "REMOTE",
+  "url" : "https://conan.bintray.com",
+  "packageType" : "Conan"
+}, {
+  "key" : "conda-remote",
+  "type" : "REMOTE",
+  "url" : "https://repo.anaconda.com/pkgs/main",
+  "packageType" : "Conda"
+}, {
+  "key" : "cran-remote",
+  "type" : "REMOTE",
+  "url" : "https://cran.r-project.org/",
+  "packageType" : "CRAN"
+}, {
+  "key" : "debian-remote",
+  "type" : "REMOTE",
+  "url" : "http://archive.ubuntu.com/ubuntu/",
+  "packageType" : "Debian"
+}, {
+  "key" : "docker-remote",
+  "type" : "REMOTE",
+  "url" : "https://registry-1.docker.io/",
+  "packageType" : "Docker"
+}, {
+  "key" : "jcenter",
+  "type" : "REMOTE",
+  "url" : "https://jcenter.bintray.com",
+  "packageType" : "Maven"
+}, {
+  "key" : "maven-remote-oren-test",
+  "type" : "REMOTE",
+  "url" : "https://jcenter.bintray.com",
+  "packageType" : "Maven"
+}, {
+  "key" : "npm-remote",
+  "type" : "REMOTE",
+  "url" : "https://registry.npmjs.org",
+  "packageType" : "Npm"
+}, {
+  "key" : "opkg-remote",
+  "type" : "REMOTE",
+  "url" : "https://downloads.openwrt.org/chaos_calmer/15.05.1/",
+  "packageType" : "Opkg"
+}, {
+  "key" : "auto-cli-virtual-is-this-working",
+  "description" : "",
+  "type" : "VIRTUAL",
+  "url" : "https://tal.jfrog.io/artifactory/auto-cli-virtual-is-this-working",
+  "packageType" : "Maven"
+}, {
+  "key" : "auto-cli-virtual-lirans-feature",
+  "description" : "",
+  "type" : "VIRTUAL",
+  "url" : "https://tal.jfrog.io/artifactory/auto-cli-virtual-lirans-feature",
+  "packageType" : "Maven"
+}, {
+  "key" : "auto-cli-virtual-this-is-my-test-feature-1",
+  "description" : "",
+  "type" : "VIRTUAL",
+  "url" : "https://tal.jfrog.io/artifactory/auto-cli-virtual-this-is-my-test-feature-1",
+  "packageType" : "Maven"
+}, {
+  "key" : "conan",
+  "type" : "VIRTUAL",
+  "url" : "https://tal.jfrog.io/artifactory/conan",
+  "packageType" : "Conan"
+}, {
+  "key" : "conda",
+  "type" : "VIRTUAL",
+  "url" : "https://tal.jfrog.io/artifactory/conda",
+  "packageType" : "Conda"
+}, {
+  "key" : "cran",
+  "type" : "VIRTUAL",
+  "url" : "https://tal.jfrog.io/artifactory/cran",
+  "packageType" : "CRAN"
+}, {
+  "key" : "debian",
+  "type" : "VIRTUAL",
+  "url" : "https://tal.jfrog.io/artifactory/debian",
+  "packageType" : "Debian"
+}, {
+  "key" : "docker",
+  "type" : "VIRTUAL",
+  "url" : "https://tal.jfrog.io/artifactory/docker",
+  "packageType" : "Docker"
+}, {
+  "key" : "libs-release",
+  "type" : "VIRTUAL",
+  "url" : "https://tal.jfrog.io/artifactory/libs-release",
+  "packageType" : "Maven"
+}, {
+  "key" : "libs-snapshot",
+  "type" : "VIRTUAL",
+  "url" : "https://tal.jfrog.io/artifactory/libs-snapshot",
+  "packageType" : "Maven"
+}, {
+  "key" : "maven-virtual-oren-test",
+  "type" : "VIRTUAL",
+  "url" : "https://tal.jfrog.io/artifactory/maven-virtual-oren-test",
+  "packageType" : "Maven"
+}, {
+  "key" : "name",
+  "description" : "",
+  "type" : "VIRTUAL",
+  "url" : "https://tal.jfrog.io/artifactory/name",
+  "packageType" : "Maven"
+}, {
+  "key" : "npm",
+  "type" : "VIRTUAL",
+  "url" : "https://tal.jfrog.io/artifactory/npm",
+  "packageType" : "Npm"
+} ]
