@@ -49,7 +49,7 @@ jobs:
       run: |
         echo "::set-env name=repository::$(echo ${GITHUB_REF#refs/heads/} | sed 's/\//_/g')"
         echo $repository
-        jfrog rt mvnc --repo-resolve-releases=auto-cli-virtual-$repository --repo-resolve-snapshots=auto-cli-virtual-$repository --repo-deploy-releases=auto-cli-virtual-$repository --repo-deploy-snapshots=auto-cli-virtual-$repository
+        jfrog rt mvnc --server-id-resolve=tal-personal-arti --server-id-deploy=tal-personal-arti --repo-resolve-releases=auto-cli-virtual-lirans-feature --repo-resolve-snapshots=auto-cli-virtual-lirans-feature --repo-deploy-releases=auto-cli-virtual-lirans-feature --repo-deploy-snapshots=auto-cli-virtual-lirans-feature
 
     # if pushed from a master branch, should delete the proper repository in artifactory
     - if: always()
@@ -61,8 +61,7 @@ jobs:
       name: Build & Deploy
       run: |
         echo $repository
-        cd maths
-        jfrog mvn clean install
+        jfrog rt mvn clean install -f maths/pom.xml
         
     - if: always()
       name: Publish Build Information
