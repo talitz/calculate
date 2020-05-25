@@ -1,7 +1,7 @@
 {
     "files": [
      {
-        "pattern": "auto-cli-*",
+        "pattern": "${key1}",
         "sortBy": ["updated"],
         "sortOrder": "desc",
         "limit": 1
