@@ -44,8 +44,8 @@ jobs:
       name: Feature Branch Repository Creation
       run: |
         echo $GITHUB_REF_NAME
-        jfrog rt rc local-repo-template.json --vars key1=auto-cli-local-$GITHUB_REF_NAME
-        jfrog rt rc virtual-repo-template.json --vars key1=auto-cli-virtual-$GITHUB_REF_NAME
+        jfrog rt rc local-repo-template.json --vars key1=$GITHUB_REF_NAME
+        jfrog rt rc virtual-repo-template.json --vars key1=$GITHUB_REF_NAME
 
     - if: ${{ failure() }}
       name: Feature Branch Repository Update
