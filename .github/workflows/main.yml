@@ -41,7 +41,7 @@ jobs:
       name: Feature Branch Repository Creation
       run: |
         echo "::set-env name=repository::$(echo ${GITHUB_REF#refs/heads/} | sed 's/\//_/g')"
-        echo $repository
+        echo ${{ env.repository }}
         jfrog rt rc local-repo-template.json --vars key1=auto-cli-${{ env.repository }}
         jfrog rt rc virtual-repo-template.json --vars key1=auto-cli-${{ env.repository }}
 
