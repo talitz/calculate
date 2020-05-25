@@ -40,12 +40,9 @@ jobs:
     - if: github.ref != 'refs/heads/master'
       name: Feature Branch Repository Creation
       run: |
-        echo ${{ GITHUB.REF }}
-        echo ${{ GITHUB.HEAD_REF }}
-        echo ${{ GITHUB.BASE_REF }}
         echo "::set-env name=repository::$(echo ${GITHUB_REF#refs/heads/} | sed 's/\//_/g')"
-        jfrog rt rc local-repo-template.json --vars key1=$repository
-        jfrog rt rc virtual-repo-template.json --vars key1=$repository
+        jfrog rt rc local-repo-template.json --vars key1=$(echo $repository)
+        jfrog rt rc virtual-repo-template.json --vars key1=$(echo $repository)
 
     - if: ${{ failure() }}
       name: Feature Branch Repository Update
