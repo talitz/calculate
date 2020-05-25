@@ -64,7 +64,7 @@ jobs:
       name: Build & Deploy
       run: |
         echo $repository
-        cd maths && jfrog rt mvn -Dproject.repository.name=$repository clean install
+        cd maths && jfrog rt mvn -Dproject.repository.name=$(echo $repository) clean install
         
     - if: github.ref == 'refs/heads/master'
       name: Publish Build Information
