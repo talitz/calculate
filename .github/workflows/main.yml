@@ -63,8 +63,14 @@ jobs:
         # Filter the repositories created automatically by the CI process
         cat all_repositories_list.json | jq '[.[] | .key | select(test("auto-cli"))]' > auto_created_repositories.json
 
+        # Iterate over all the repositories, delete those by the latest file that was modified
+        # If latest modified file was > 1 day => DELETE the repository
+        #jq -c '.[]' auto_created_repositories.json | while read i; do
+          jfrog rt s --spec repositories-spec.json --spec-vars='key1="auto-cli-virtual-lirans-feature"'
+        #done
+
         jq -c '.[]' auto_created_repositories.json | while read i; do
-          jfrog rt s --spec repositories-spec.json --spec-vars='key1=\$i'
+          echo $i
         done
     
     - if: always()
