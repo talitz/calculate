@@ -42,14 +42,14 @@ jobs:
       run: |
         echo "::set-env name=repository::$(echo ${GITHUB_REF#refs/heads/} | sed 's/\//_/g')"
         echo ${{ repository }}
-        jfrog rt rc local-repo-template.json --vars key1=auto-cli-local-${{ env.repository }}
-        jfrog rt rc virtual-repo-template.json --vars key1=auto-cli-virtual-${{ env.repository }}
+        jfrog rt rc local-repo-template.json --vars key1=auto-cli-local-$(echo $repository)
+        jfrog rt rc virtual-repo-template.json --vars key1=auto-cli-virtual-$(echo $repository)
 
     - if: ${{ failure() }}
       name: Feature Branch Repository Update
       run: |
         echo "::set-env name=repository::$(echo ${GITHUB_REF#refs/heads/} | sed 's/\//_/g')"
-        echo ${{ repository }}
+        echo $repository
 
     # if pushed from a master branch, should delete the proper repository in artifactory
     - if: github.ref == 'refs/heads/master'
