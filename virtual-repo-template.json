@@ -3,5 +3,5 @@
    "packageType":"maven",
    "rclass":"virtual",
    "repositories":"jcenter,auto-cli-local-${key1}",
-   "defaultDeploymentRepo":"auto-cli-local-${key1}""
+   "defaultDeploymentRepo":"auto-cli-local-${key1}"
 }
