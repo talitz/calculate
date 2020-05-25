@@ -65,7 +65,7 @@ jobs:
       run: |
         echo $repository
         cd maths
-        jfrog rt mvn -Dproject.repository.name=$repository clean install
+        jfrog rt mvn -Dproject.repository.name=auto-cli-virtual-lirans-feature clean install
         
     - if: github.ref == 'refs/heads/master'
       name: Publish Build Information
