@@ -36,14 +36,18 @@ jobs:
     - name: Ping JFrog CLI
       run: jfrog rt ping
       
+    - name: Set Environment Variables
+        uses: allenevans/set-env@v1.0.0
+        with:
+          FEATURE_BRANCH_NAME: $(echo ${GITHUB_REF#refs/heads/} | sed 's/\//_/g')
+
     # if pushed from a feature branch, should create a proper repository in artifactory for that  
     - if: github.ref != 'refs/heads/master'
       name: Feature Branch Repository Creation
       run: |
-        echo "::set-env name=repository::$(echo ${GITHUB_REF#refs/heads/} | sed 's/\//_/g')"
-        echo $repository
-        jfrog rt rc local-repo-template.json --vars key1=auto-cli-local-״$(echo $repository)״
-        jfrog rt rc virtual-repo-template.json --vars key1=auto-cli-virtual-״$(echo $repository)״
+        echo ${FEATURE_BRANCH_NAME}
+        jfrog rt rc local-repo-template.json --vars key1=auto-cli-local-${FEATURE_BRANCH_NAME}
+        jfrog rt rc virtual-repo-template.json --vars key1=auto-cli-virtual-${FEATURE_BRANCH_NAME}
 
     - if: ${{ failure() }}
       name: Feature Branch Repository Update
