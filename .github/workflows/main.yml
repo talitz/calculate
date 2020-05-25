@@ -42,8 +42,8 @@ jobs:
       run: |
         echo "::set-env name=repository::$(echo ${GITHUB_REF#refs/heads/} | sed 's/\//_/g')"
         echo $repository
-        jfrog rt rc local-repo-template.json --vars key1=auto-cli-$(echo $repository)
-        jfrog rt rc virtual-repo-template.json --vars key1=auto-cli-$(echo $repository)
+        jfrog rt rc local-repo-template.json --vars key1=auto-cli-$repository
+        jfrog rt rc virtual-repo-template.json --vars key1=auto-cli-$repository
 
     - if: ${{ failure() }}
       name: Feature Branch Repository Update
