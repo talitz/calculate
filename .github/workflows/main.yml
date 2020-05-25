@@ -35,14 +35,19 @@ jobs:
         
     - name: Ping JFrog CLI
       run: jfrog rt ping
+
+    - name: Extracting Branch Name
+      shell: bash
+      run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+      id: extract_branch
       
     # if pushed from a feature branch, should create a proper repository in artifactory for that  
     - if: github.ref != 'refs/heads/master'
       name: Feature Branch Repository Creation
       run: |
         echo "::set-env name=BRANCH::$(echo ${GITHUB_REF##*/})"
-        jfrog rt rc local-repo-template.json --vars key1=auto-cli-local-$(echo ${GITHUB_REF##*/})
-        jfrog rt rc virtual-repo-template.json --vars key1=auto-cli-virtual-$(echo ${GITHUB_REF##*/})
+        jfrog rt rc local-repo-template.json --vars key1=auto-cli-local-${{ steps.extract_branch.outputs.branch }}
+        jfrog rt rc virtual-repo-template.json --vars key1=auto-cli-virtual-${{ steps.extract_branch.outputs.branch }}
 
     # if pushed from a master branch, should delete the proper repository in artifactory
     - if: github.ref == 'refs/heads/master'
