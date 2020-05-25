@@ -1,9 +1,9 @@
 name: calculate-ci-job
 on:  
   push:
-    branches: [ master ]
+    branches-ignore: [ master ]
   pull_request:   
-    branches: [ master ]
+    branches-ignore: [ master ]
   schedule: 
     - cron:  '0 1 * * *'
        
