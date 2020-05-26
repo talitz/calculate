@@ -44,8 +44,8 @@ jobs:
     # if pushed from a feature branch, should create a proper repository in artifactory for that  
     - name: Feature Branch Repository Creation
       run: |
-        jfrog rt rc local-repo-template.json --vars key1=$repository
-        jfrog rt rc virtual-repo-template.json --vars key1=$repository
+        jfrog rt rc templates/local-repo-template.json --vars key1=$repository
+        jfrog rt rc templates/virtual-repo-template.json --vars key1=$repository
 
     - if: always()
       name: Feature Branch Repository Update

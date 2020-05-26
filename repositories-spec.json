@@ -3,8 +3,8 @@
      {
         "pattern": ${key1},
         "sortBy": ["updated"],
-        "sortOrder": "desc",
-        "limit": 1
+        "sortOrder": "asc",
+        "limit": 10
      }
     ]
 }
