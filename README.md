@@ -5,6 +5,11 @@ A tiny repo for running small experiments in CI/CD
 - Contains a single class with 4 methods
 - Contains simple unit tests
 
-The code and the tests can be easily tweaked to introduce various error conditons for testing the CI/CD pipeline
- 
-- Contains a simple Jenkinsfile for easy pipeline setup
+# Automate Repositories Creation with JFrog CLI
+
+Advantages:
+1) "Clean" Dependencies
+2) Isolation
+3) Deploy your application without outside noise
+4) You can configure a specific watch on build.
+
