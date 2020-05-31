@@ -1,6 +1,6 @@
 # Calculate - Experiments with GitHub Actions
 A tiny repo for running small experiments in CI/CD
-
+  
 - Contains a tiny maven project
 - Contains a single class with 4 methods
 - Contains simple unit tests
