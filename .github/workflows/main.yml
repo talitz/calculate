@@ -70,9 +70,9 @@ jobs:
           fi
         #done
 
-        jq -c '.[]' deletion/auto_created_repositories.json | while read i; do
-          echo $i
-        done
+        #jq -c '.[]' deletion/auto_created_repositories.json | while read i; do
+        #  echo $i
+        #done
     
     - if: always()
       name: Build & Deploy
