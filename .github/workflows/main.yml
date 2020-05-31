@@ -58,13 +58,16 @@ jobs:
       name: Feature Branch Repository Deletion
       run: |
         # Extract all the repositories & Filter the repositories created automatically by the CI process
-        jfrog rt curl -XGET /api/repositories > | jq '[.[] | .key | select(test("auto-cli"))]' > deletion/auto_created_repositories.json
+        jfrog rt curl -XGET /api/repositories | jq '[.[] | .key | select(test("auto-cli"))]' > deletion/auto_created_repositories.json
 
         # Iterate over all the repositories, delete those by the latest file that was modified
         #jq -c '.[]' deletion/auto_created_repositories.json | while read i; do
           # If latest modified file was > 1 day => DELETE the repository
-          jfrog rt s --spec deletion/repositories-spec.json --spec-vars='key1="auto-cli-virtual-lirans-feature"' | jq '.[] | .created' > last_created_file_time_for_repo
-          
+          if jfrog rt s --spec deletion/repositories-spec.json --spec-vars='key1="auto-cli-virtual-lirans-feature"' | jq '.[] | .created | . > "2020-06-25"'; then
+             echo "Deleting the repository, too old to keep in Artifactory"
+          else
+             echo "Skipping Repository deletion - repository is still relevant"
+          fi
         #done
 
         jq -c '.[]' deletion/auto_created_repositories.json | while read i; do
