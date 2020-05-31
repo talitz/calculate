@@ -65,8 +65,8 @@ jobs:
           # If latest modified file was > 1 day => DELETE the repository
           if [ $(jfrog rt s --spec deletion/repositories-spec.json --spec-vars='key1="auto-cli-virtual-lirans-feature"' | jq '.[] | .created | . > "2010-01-25"') = "true" ]; then
              echo "Deleting the repository, too old to keep in Artifactory"
-             jfrog rt rdel auto-cli-local-lirans-feature --quiet=true
-             jfrog rt rdel auto-cli-virtual-lirans-feature --quiet=true
+             jfrog rt rdel auto-cli-local-lirans-feature --quiet
+             jfrog rt rdel auto-cli-virtual-lirans-feature --quiet
           else
              echo "Skipping Repository deletion - repository is still relevant"
           fi
