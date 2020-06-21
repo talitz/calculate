@@ -14,7 +14,7 @@ Many customers wish to manage not only their feature branch code but also binari
 But do we actually need to create a repository in a manual way for each feature branch we create?
 Well, with the JFrog CLI - definitly not. JFrog CLI offers a set of commands for managing Artifactory repositories. You can create, update and delete repositories.
 
-# The Solution - The JFrog CLI!
+# The Solution
 Let's discuss an example of how to implement such automation on a CI server.
 Our CI server will recognize, while running, if the relevant pull request was opened from a feature branch / master branch, and, will behave as follows:
 1. If branch is 'master', do nothing.
@@ -34,7 +34,7 @@ This way, we can achieve the following advantages:
 3) Deploy your application without outside noise
 4) You can configure a specific watch on build
 
-# Can we grow with this Solution?
+# Scaling Concerns
 But is this solution scalable? What happens when we grow, and develop hundreds of features? that creates quite a mess in artifactory. Some features might get old and not relevant, pushed way back to master and can be deleted. Well, we have a solution for that as well.
 
 Delete Old Repositoreis Mechanism.
