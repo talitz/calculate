@@ -57,9 +57,9 @@ We will create a CI process that will be triggered for non-master pull requests 
 
 With this following mechanism we are achieving the following advantages:
 1) Isolation
-2) "Clean" Dependencies
-3) Deploy your application without outside noise
-4) Configure a specific watch on build
+2) "Clean" Dependencies per feature - only the needed dependencies will be stored (not twice, Artifactory is a checksum based storage - https://jfrog.com/article/checksum-based-storage/)
+3) Deploy your application without "outside noise"
+4) Configure a specific watch on the build using Xray
 
 # Deletion Mechanism - Scaling Up
 But is this solution scalable? What happens when we grow, and develop hundreds of features? that creates quite a mess in artifactory. Some features might get old and not relevant, pushed way back to master and can be deleted. Well, we have a solution for that as well.
