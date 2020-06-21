@@ -22,7 +22,7 @@ The JFrog CLI offers a set of commands for managing Artifactory repositories. Yo
 
 We will add an aditional steps to the CI, before building and deploying the project to Artifactory, that performs the follows:
 
-<img src="https://i.ibb.co/QpsFZgJ/Screen-Shot-2020-06-21-at-19-00-24.png" alt="alt text" width="250" height="180">
+<img src="https://i.ibb.co/QpsFZgJ/Screen-Shot-2020-06-21-at-19-00-24.png" alt="alt text" width="250" height="150">
 
 1. If branch is 'master', do nothing.
 2. On branch is 'X', if it does not exist already, open 2 repositories:
