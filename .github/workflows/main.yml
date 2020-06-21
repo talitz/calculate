@@ -52,6 +52,25 @@ jobs:
       run: |
         echo "::set-env name=repository::$(echo ${GITHUB_REF#refs/heads/} | sed 's/\//_/g')"
         jfrog rt mvnc --server-id-resolve=tal-personal-arti --server-id-deploy=tal-personal-arti --repo-resolve-releases=auto-cli-virtual-$repository --repo-resolve-snapshots=auto-cli-virtual-$repository --repo-deploy-releases=auto-cli-virtual-$repository --repo-deploy-snapshots=auto-cli-virtual-$repository
+    
+    - if: always()
+      name: Build & Deploy
+      run: jfrog rt mvn clean install -f maths/pom.xml
+        
+    - if: always()
+      name: Publish Build Information
+      run: |
+        # Collect environment variables for the build
+        jfrog rt bce
+        # Collect VCS details from git and add them to the build
+        jfrog rt bag
+        # Publish build info
+        jfrog rt bp       
+        
+    - if: always()
+      name: Xray Scan
+      run: |
+        jfrog rt bs
 
     # if pushed from a master branch, should delete the proper repository in artifactory
     - if: always()
@@ -75,23 +94,4 @@ jobs:
           else
              echo "Skipping Repository deletion - repository is still relevant"
           fi
-        #done
-    
-    - if: always()
-      name: Build & Deploy
-      run: jfrog rt mvn clean install -f maths/pom.xml
-        
-    - if: always()
-      name: Publish Build Information
-      run: |
-        # Collect environment variables for the build
-        jfrog rt bce
-        # Collect VCS details from git and add them to the build
-        jfrog rt bag
-        # Publish build info
-        jfrog rt bp       
-        
-    - if: always()
-      name: Xray Scan
-      run: |
-        jfrog rt bs
+        #done        
