@@ -78,16 +78,17 @@ jobs:
     - if: always()
       name: Feature Branch Repository Deletion
       env:
-        NUMBER_OF_MONTHS_TO_KEEP: 3
+        NUMBER_OF_DAYS_TO_KEEP: 90
       run: |
         # Extract all the repositories & Filter the repositories created automatically by the CI process
         jfrog rt curl -XGET /api/repositories | jq '[.[] | .key | select(test("auto-cli"))]' > deletion/auto_created_repositories.json
 
+        # Calculate for which month are we going back to verify who should be deleted
+        jq -n 'now - 3600 * 24 * '$NUMBER_OF_DAYS_TO_KEEP' | gmtime | todate' > deletion/months_indicator && cat deletion/months_indicator
+
         # Iterate over all the repositories, delete those by the latest file that was modified
         jq -c '.[]' deletion/auto_created_repositories.json | while read i; do
           echo Iterating repository = $i
-          jq -n 'now - 3600 * 24 * 7 * 4 * '$NUMBER_OF_MONTHS_TO_KEEP' | gmtime | todate' > deletion/months_indicator
-          cat deletion/months_indicator
 
           # If latest modified file is older > NUMBER_OF_MONTHS_TO_KEEP months => DELETE the repository
           if [ $(jfrog rt s --spec deletion/repositories-spec.json --spec-vars='key1="$i"' | jq --arg month_indicator $(cat deletion/months_indicator) '.[] | .modified | . < $month_indicator') = "true" ]; then
