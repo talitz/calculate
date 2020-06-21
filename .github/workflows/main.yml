@@ -89,9 +89,10 @@ jobs:
         # Iterate over all the repositories, delete those by the latest file that was modified
         jq -c '.[]' deletion/auto_created_repositories.json | while read i; do
           echo Iterating repository = $i
-
-          # If latest modified file is older > NUMBER_OF_MONTHS_TO_KEEP months => DELETE the repository
-          if [[ $(jfrog rt s --spec deletion/repositories-spec.json --spec-vars='key1="$i"' --fail-no-op | jq --arg month_indicator $(cat deletion/months_indicator) '.[] | .modified | . <= $month_indicator') = "true" ]]; then
+          jfrog rt s --spec deletion/repositories-spec.json --spec-vars='key1="$i"' --fail-no-op > deletion/search_results && cat deletion/search_results
+          
+          # If latest modified file is older > NUMBER_OF_DAYS_TO_KEEP days => DELETE the repository
+          if [[ $(cat search_results | jq --arg month_indicator $(cat deletion/months_indicator) '.[] | .modified | . <= $month_indicator') = "true" ]]; then
              echo "Deleting the repository, too old to keep in Artifactory"
              jfrog rt rdel $i --quiet
           else
