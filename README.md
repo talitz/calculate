@@ -22,7 +22,7 @@ Feature branches are a popular technique, particularly well-suited to open-sourc
 Many customers wish to manage not only their feature branch code but also the resulted binaries and store them in Artifactory in a dedicated repository.
 But do we actually need to create a repository manually for every new feature branch that we work on? How can we maintain that in an easier way?
 
-<img src="https://cdn.shopify.com/s/files/1/0533/2089/files/git-guide-feature-branches.png?v=1519172189" alt="alt text" width="400" height="220">
+<img src="https://cdn.shopify.com/s/files/1/0533/2089/files/git-guide-feature-branches.png?v=1519172189" alt="alt text" width="440" height="250">
 
 ## The Solution
 The JFrog CLI offers a set of commands for managing Artifactory repositories. You can create, update and delete repositories. Let's discuss an example of how to implement such automation on a CI server: GitHub Actions.
