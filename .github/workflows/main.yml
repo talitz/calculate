@@ -80,7 +80,7 @@ jobs:
       env:
         NUMBER_OF_MONTHS_TO_KEEP: 3
       run: |
-        cat $NUMBER_OF_MONTHS_TO_KEEP
+        echo $NUMBER_OF_MONTHS_TO_KEEP
         # Extract all the repositories & Filter the repositories created automatically by the CI process
         jfrog rt curl -XGET /api/repositories | jq '[.[] | .key | select(test("auto-cli"))]' > deletion/auto_created_repositories.json
 
