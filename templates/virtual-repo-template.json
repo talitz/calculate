@@ -5,3 +5,4 @@
    "repositories":"auto-cli-jcentral-${key1},auto-cli-local-${key1}",
    "defaultDeploymentRepo":"auto-cli-local-${key1}"
 }      
+  
