@@ -2,7 +2,7 @@
 
 <img src="https://i.ibb.co/pd6Fqqq/Blog-post-Go-Center-04.jpg" alt="alt text" width="600" height="200">
 
-## Table of Contents (Optional)
+## Table of Contents
 
 - [Background](#background)
 - [The Problem](#theproblem)
