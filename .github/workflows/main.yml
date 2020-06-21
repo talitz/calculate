@@ -72,22 +72,23 @@ jobs:
       run: |
         jfrog rt bs
 
+
+
     # if pushed from a master branch, should delete the proper repository in artifactory
     - if: always()
       name: Feature Branch Repository Deletion
+      env:
+        NUMBER_OF_MONTHS_TO_KEEP: ${{ secrets.JF_ARTIFACTORY_SECRET_1 }}
       run: |
         # Extract all the repositories & Filter the repositories created automatically by the CI process
         jfrog rt curl -XGET /api/repositories | jq '[.[] | .key | select(test("auto-cli"))]' > deletion/auto_created_repositories.json
 
-        # Print all repositories
-        jq -c '.[]' deletion/auto_created_repositories.json | while read i; do
-          echo $i
-        done
-
         # Iterate over all the repositories, delete those by the latest file that was modified
         #jq -c '.[]' deletion/auto_created_repositories.json | while read i; do
-          # If latest modified file was > 1 day => DELETE the repository
-          if [ $(jfrog rt s --spec deletion/repositories-spec.json --spec-vars='key1="auto-cli-local-sunday-funday"' | jq '.[] | .created | . > "2010-01-25"') = "true" ]; then
+          # If latest created file is older > NUMBER_OF_MONTHS_TO_KEEP months => DELETE the repository
+
+          jq -n 'now - (3600 * 24 * 7 * 4 * $NUMBER_OF_MONTHS_TO_KEEP) | gmtime | todate' > deletion/months_indicator
+          if [ $(jfrog rt s --spec deletion/repositories-spec.json --spec-vars='key1="auto-cli-local-sunday-funday"' | jq '.[] | .created | . > $(cat deletion/months_indicator)') = "true" ]; then
              echo "Deleting the repository, too old to keep in Artifactory"
              jfrog rt rdel auto-cli-local-sunday-funday --quiet
              jfrog rt rdel auto-cli-virtual-sunday-funday --quiet
