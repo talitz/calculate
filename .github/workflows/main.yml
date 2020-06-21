@@ -88,7 +88,7 @@ jobs:
         #jq -c '.[]' deletion/auto_created_repositories.json | while read i; do
           # If latest created file is older > NUMBER_OF_MONTHS_TO_KEEP months => DELETE the repository
 
-          jq -n 'now - (3600 * 24 * 7 * 4 * $(echo $NUMBER_OF_MONTHS_TO_KEEP)) | gmtime | todate' > deletion/months_indicator
+          jq -n 'now - 3600 * 24 * 7 * 4 * $(echo $NUMBER_OF_MONTHS_TO_KEEP) | gmtime | todate' > deletion/months_indicator
           if [ $(jfrog rt s --spec deletion/repositories-spec.json --spec-vars='key1="auto-cli-local-sunday-funday"' | jq '.[] | .created | . > $(cat deletion/months_indicator)') = "true" ]; then
              echo "Deleting the repository, too old to keep in Artifactory"
              jfrog rt rdel auto-cli-local-sunday-funday --quiet
