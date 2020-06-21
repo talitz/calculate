@@ -20,7 +20,7 @@ The JFrog CLI offers a set of commands for managing Artifactory repositories. Yo
 
 <b>Note</b>: we won't discuss about how to perform the integration with Artifactory, this is detailed in the following blog post: https://jfrog.com/blog/jfrog-cli-github-actions-hero/.
 
-We will add an aditional steps to the CI, before building and deploying the project to Artifactory, that performs the follows:
+We will create a CI process that will be triggered for non-master pull requests and we will add steps for automating the repository creation before building and deploying the software to Artifactory:
 
 <img src="https://i.ibb.co/QpsFZgJ/Screen-Shot-2020-06-21-at-19-00-24.png" alt="alt text" width="250" height="90">
 
@@ -34,11 +34,11 @@ So, let's say 3 developers worked on 3 different features, X, Y and Z, the repos
 
 With this following mechanism we are achieving the following advantages:
 1) Isolation
-2) We have "Clean" Dependencies
+2) "Clean" Dependencies
 3) Deploy your application without outside noise
-4) You can configure a specific watch on build
+4) Configure a specific watch on build
 
-# Scaling Concerns
+# Scale
 But is this solution scalable? What happens when we grow, and develop hundreds of features? that creates quite a mess in artifactory. Some features might get old and not relevant, pushed way back to master and can be deleted. Well, we have a solution for that as well.
 
 Delete Old Repositoreis Mechanism.
