@@ -96,6 +96,7 @@ jobs:
           if [[ $(cat deletion/search_results) == "[]" || 
                 $(cat deletion/search_results | jq --arg month_indicator $(cat deletion/months_indicator) '.[] | .modified | . <= $month_indicator') = "true" ]]; then
              echo "Deleting repository: $i, too old to keep in Artifactory"
+             echo $i
              jfrog rt rdel $i --quiet
              jfrog rt rdel "$i" --quiet
              jfrog rt rdel ${i} --quiet
