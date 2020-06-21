@@ -79,6 +79,7 @@ jobs:
       name: Feature Branch Repository Deletion
       env:
         NUMBER_OF_MONTHS_TO_KEEP: 3
+        MONTH_INDICATOR: jq -n 'now - 3600 * 24 * 7 * 4 * '$NUMBER_OF_MONTHS_TO_KEEP' | gmtime | todate'
       run: |
         echo $NUMBER_OF_MONTHS_TO_KEEP
         # Extract all the repositories & Filter the repositories created automatically by the CI process
@@ -86,10 +87,9 @@ jobs:
 
         # Iterate over all the repositories, delete those by the latest file that was modified
         #jq -c '.[]' deletion/auto_created_repositories.json | while read i; do
+          
           # If latest created file is older > NUMBER_OF_MONTHS_TO_KEEP months => DELETE the repository
-
-          jq -n 'now - 3600 * 24 * 7 * 4 * $(echo $NUMBER_OF_MONTHS_TO_KEEP) | gmtime | todate' > deletion/months_indicator
-          if [ $(jfrog rt s --spec deletion/repositories-spec.json --spec-vars='key1="auto-cli-local-sunday-funday"' | jq '.[] | .created | . > $(cat deletion/months_indicator)') = "true" ]; then
+          if [ $(jfrog rt s --spec deletion/repositories-spec.json --spec-vars='key1="auto-cli-local-sunday-funday"' | jq '.[] | .created | . > '$MONTH_INDICATOR'') = "true" ]; then
              echo "Deleting the repository, too old to keep in Artifactory"
              jfrog rt rdel auto-cli-local-sunday-funday --quiet
              jfrog rt rdel auto-cli-virtual-sunday-funday --quiet
