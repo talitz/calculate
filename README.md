@@ -2,6 +2,13 @@
 
 <img src="https://i.ibb.co/pd6Fqqq/Blog-post-Go-Center-04.jpg" alt="alt text" width="600" height="200">
 
+## Table of Contents (Optional)
+
+- [Background](#background)
+- [The Problem](#the_problem)
+- [The Solution](#the_solution)
+- [Deletion Mechanism - Scaling Up](#scaling_up)
+
 # Background
 Imagine a world in which liquid software flows to systems and devices for secure and automatic continuous updates. JFrog offers many automation tools that can assist you on achiving this vision like our REST API, User Plugins and the JFrog CLI.
 
@@ -38,7 +45,7 @@ With this following mechanism we are achieving the following advantages:
 3) Deploy your application without outside noise
 4) Configure a specific watch on build
 
-# Scale
+# Deletion Mechanism - Scaling Up
 But is this solution scalable? What happens when we grow, and develop hundreds of features? that creates quite a mess in artifactory. Some features might get old and not relevant, pushed way back to master and can be deleted. Well, we have a solution for that as well.
 
 Delete Old Repositoreis Mechanism.
