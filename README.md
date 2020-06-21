@@ -1,6 +1,6 @@
 # Automate Repositories Creation with JFrog CLI
 
-<img src="https://i.ibb.co/pd6Fqqq/Blog-post-Go-Center-04.jpg" alt="alt text" width="700" height="300">
+<img src="https://i.ibb.co/pd6Fqqq/Blog-post-Go-Center-04.jpg" alt="alt text" width="900" height="350">
 
 # Background
 Imagine a world in which liquid software flows to systems and devices for secure and automatic continuous updates. JFrog offers many automation tools that can assist you on achiving this vision, our REST API, User Plugins, and our JFrog CLI.
