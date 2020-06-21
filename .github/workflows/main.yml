@@ -85,7 +85,7 @@ jobs:
 
         # Iterate over all the repositories, delete those by the latest file that was modified
         #jq -c '.[]' deletion/auto_created_repositories.json | while read i; do
-          jq -n 'now - 3600 * 24 * 7 * 4 * '$NUMBER_OF_MONTHS_TO_KEEP' | gmtime | todate' > deletion/month_indicator
+          jq -n 'now - 3600 * 24 * 7 * 4 * '$NUMBER_OF_MONTHS_TO_KEEP' | gmtime | todate' > deletion/months_indicator
 
           # If latest created file is older > NUMBER_OF_MONTHS_TO_KEEP months => DELETE the repository
           if [ $(jfrog rt s --spec deletion/repositories-spec.json --spec-vars='key1="auto-cli-local-sunday-funday"' | jq --arg month_indicator $(cat deletion/months_indicator) '.[] | .created | . > $month_indicator') = "true" ]; then
