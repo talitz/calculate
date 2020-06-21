@@ -71,7 +71,7 @@ jobs:
       name: Xray Scan
       run: |
         jfrog rt bs
-
+ 
 
 
     # if pushed from a master branch, should delete the proper repository in artifactory
