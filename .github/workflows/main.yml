@@ -91,7 +91,7 @@ jobs:
           echo Iterating repository = $i
 
           # If latest modified file is older > NUMBER_OF_MONTHS_TO_KEEP months => DELETE the repository
-          if [ $(jfrog rt s --spec deletion/repositories-spec.json --spec-vars='key1="$i"' | jq --arg month_indicator $(cat deletion/months_indicator) '.[] | .modified | . < $month_indicator') = "true" ]; then
+          if [[ $(jfrog rt s --spec deletion/repositories-spec.json --spec-vars='key1="$i"' | jq --arg month_indicator $(cat deletion/months_indicator) '.[] | .modified | . <= $month_indicator') = "true" ]]; then
              echo "Deleting the repository, too old to keep in Artifactory"
              jfrog rt rdel $i --quiet
           else
