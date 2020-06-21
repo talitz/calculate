@@ -79,7 +79,7 @@ jobs:
       name: Feature Branch Repository Deletion
       env:
         NUMBER_OF_MONTHS_TO_KEEP: 3
-        MONTH_INDICATOR: jq -n 'now - 3600 * 24 * 7 * 4 * '$NUMBER_OF_MONTHS_TO_KEEP' | gmtime | todate'
+        MONTH_INDICATOR: $(jq -n 'now - 3600 * 24 * 7 * 4 * '$NUMBER_OF_MONTHS_TO_KEEP' | gmtime | todate')
       run: |
         echo $NUMBER_OF_MONTHS_TO_KEEP
         echo $MONTH_INDICATOR
