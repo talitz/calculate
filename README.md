@@ -38,7 +38,7 @@ We will create a CI process that will be triggered for non-master pull requests 
    - 1 Virtual repository: 'auto-cli-virtual-X' pointing to both 'auto-cli-local-X' and to 'auto-cli-jcentral-X', the CI server will use the URL for this repository.
 3. Update the build's current repository: 'auto-cli-virtual-X' for fetching 3rd party dependencies and pushing the resulted feature branch artifacts.
 
-<img src="https://i.ibb.co/h8Gxp8L/Screen-Shot-2020-06-21-at-22-32-06.png" alt="alt text" width="600" height="200">
+<img src="https://i.ibb.co/h8Gxp8L/Screen-Shot-2020-06-21-at-22-32-06.png" alt="alt text" width="400" height="200">
 
 ```shell  
     - name: Feature Branch Repository Creation
