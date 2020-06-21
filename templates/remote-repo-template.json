@@ -1,0 +1,6 @@
+{
+	"key":"auto-cli-jcentral-${key1}",
+	"packageType":"maven",
+	"rclass":"remote",
+	"url":"https://jcenter.bintray.com"
+}
