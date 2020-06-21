@@ -9,7 +9,7 @@
 - [The Solution](#thesolution)
 - [Scaling Up](#scalingup)
 
-# Background
+## Background
 Imagine a world in which liquid software flows to systems and devices for secure and automatic continuous updates. JFrog offers many automation tools that can assist you on achiving this vision like our REST API, User Plugins and the JFrog CLI.
 
 JFrog CLI is a compact and smart client that provides a simple interface that automates access to JFrog products simplifying your automation scripts and making them more readable and easier to maintain.
@@ -18,11 +18,11 @@ We'll be focusing on how to automate repository creation on this blog post with 
 
 Feature branches are a popular technique, particularly well-suited to open-source development. They allow all the work done on a feature to kept away from a teams common codebase until completion, which allows all the risk involved in a merge to be deferred until that point.
 
-# The Problem
+## The Problem
 Many customers wish to manage not only their feature branch code but also the resulted binaries and store them in Artifactory in a dedicated repository.
 But do we actually need to create a repository manually for every new feature branch that we work on? How can we maintain that in an easier way?
 
-# The Solution
+## The Solution
 The JFrog CLI offers a set of commands for managing Artifactory repositories. You can create, update and delete repositories. Let's discuss an example of how to implement such automation on a CI server: GitHub Actions.
 
 <b>Note</b>: we won't discuss about how to perform the integration with Artifactory, this is detailed in the following blog post: https://jfrog.com/blog/jfrog-cli-github-actions-hero/.
@@ -61,7 +61,7 @@ With this following mechanism we are achieving the following advantages:
 3) Deploy your application without "outside noise"
 4) Configure a specific watch on the build using Xray
 
-# Deletion Mechanism - Scaling Up
+## Scaling Up
 But is this solution scalable? What happens when we grow, and develop hundreds of features? that creates quite a mess in artifactory. Some features might get old and not relevant, pushed way back to master and can be deleted. Well, we have a solution for that as well.
 
 Delete Old Repositoreis Mechanism.
