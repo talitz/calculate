@@ -45,7 +45,9 @@ jobs:
     - name: Feature Branch Repository Creation
       run: |
         jfrog rt rc templates/local-repo-template.json --vars key1=$repository
+        jfrog rt rc templates/remote-repo-template.json --vars key1=$repository
         jfrog rt rc templates/virtual-repo-template.json --vars key1=$repository
+
 
     - if: always()
       name: Feature Branch Repository Update
@@ -71,7 +73,7 @@ jobs:
       name: Xray Scan
       run: |
         jfrog rt bs
-
+ 
 
 
     # if pushed from a master branch, should delete the proper repository in artifactory
