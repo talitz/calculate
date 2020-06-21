@@ -22,20 +22,17 @@ The JFrog CLI offers a set of commands for managing Artifactory repositories. Yo
 
 We will add an aditional steps to the CI, before building and deploying the project to Artifactory, that performs the follows:
 
-<img src="https://i.ibb.co/QpsFZgJ/Screen-Shot-2020-06-21-at-19-00-24.png" alt="alt text" width="250" height="100">
+<img src="https://i.ibb.co/QpsFZgJ/Screen-Shot-2020-06-21-at-19-00-24.png" alt="alt text" width="250" height="90">
 
-1. If branch is 'master', do nothing.
-2. On branch is 'X', if it does not exist already, open 2 repositories:
-   - Local repository for this feature branch artifacts named 'auto-cli-local-X'.
-   - Virtual repository for this feature branch named 'auto-cli-virtual-X' and points to 'auto-cli-local-X' & the relevant remote repository that's relevant for the specific package type (in our case we used Maven project, so we choose jcenterl remote repository - an existing one).
-3. Update the current repository to be the one used on the current build (to pull & push from).
+1. If branch is X = 'master', do nothing.
+2. If branch is X != 'master', create 2 repositories (if they don't exist):
+   - 1 Local repository representing the feature branch: 'auto-cli-local-X'.
+   - 1 Virtual repository representing the feature branch: 'auto-cli-virtual-X' and points to -> 'auto-cli-local-X' and to a remote repository that's relevant for the specific package type (in our case we used Maven project, so we choose jcenter pointing to https://jcenter.bintray.com).
+3. Update the build's current repository: 'auto-cli-virtual-X' for fetching 3rd party dependencies and pushing the resulted feature branch artifacts.
 
 So, let's say 3 developers worked on 3 different features, X, Y and Z, the repository map will look as follows:
 
-
-The CI server, for each feature branch, will fetch the 3rd party dependencies from the remote repository and will push the resulted artifacts to the specific local repository that represents that feature branch.
-
-This way, we can achieve the following advantages:
+With this following mechanism we are achieving the following advantages:
 1) Isolation
 2) We have "Clean" Dependencies
 3) Deploy your application without outside noise
