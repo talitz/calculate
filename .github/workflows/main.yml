@@ -95,7 +95,7 @@ jobs:
           # => DELETE the repository
           if [[ $(cat deletion/search_results) == "[]" || 
                 $(cat deletion/search_results | jq --arg month_indicator $(cat deletion/months_indicator) '.[] | .modified | . <= $month_indicator') = "true" ]]; then
-             echo "Deleting the repository, too old to keep in Artifactory"
+             echo "Deleting repository: $i, too old to keep in Artifactory"
              jfrog rt rdel $i --quiet
           else
              echo "Skipping Repository deletion - repository is still relevant"
