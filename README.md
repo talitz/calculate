@@ -19,13 +19,13 @@ We'll be focusing on how to automate repository creation on this blog post with 
 Feature branches are a popular technique, particularly well-suited to open-source development. They allow all the work done on a feature to kept away from a teams common codebase until completion, which allows all the risk involved in a merge to be deferred until that point.
 
 ## The Problem
-Many customers wish to manage not only their feature branch code but also the resulted binaries and store them in Artifactory in a dedicated repository.
-But do we actually need to create a repository manually for every new feature branch that we work on? How can we maintain that in an easier way?
+Developers want to manage the outcome of building their feature branch code as well as the code itself, and store these artifacts in Artifactory in a dedicated repository.
+But do we actually need to manually create a repository for every new feature branch that we work on? How can we maintain that in an easier way, and perhaps automate the whole process of creation and deletion?
 
 <img src="https://cdn.shopify.com/s/files/1/0533/2089/files/git-guide-feature-branches.png?v=1519172189" alt="alt text" width="440" height="250">
 
 ## The Solution
-The JFrog CLI offers a set of commands for managing Artifactory repositories. You can create, update and delete repositories. Let's discuss an example of how to implement such automation on a CI server: GitHub Actions.
+<b>The JFrog CLI</b> offers a set of commands for managing Artifactory repositories. You can create, update and delete repositories. Let's discuss an example of how to implement such automation on a CI server: GitHub Actions.
 
 <b>Note</b>: we won't discuss about how to perform the integration with Artifactory, this is detailed in the following blog post: https://jfrog.com/blog/jfrog-cli-github-actions-hero/.
 
@@ -35,10 +35,10 @@ We will create a CI process that will be triggered for non-master pull requests 
 
 1. If branch is X = 'master', do nothing.
 2. If branch is X != 'master', create 3 repositories (if they don't exist):
-   - 1 Local repository: 'auto-cli-local-X' for the purpose of saving the resulting artifacts.
-   - 1 Remote repository: 'auto-cli-jcentral-X', pointing to https://jcenter.bintray.com.
-   - 1 Virtual repository: 'auto-cli-virtual-X' pointing to both 'auto-cli-local-X' and to 'auto-cli-jcentral-X', the CI server will use the URL for this repository.
-3. Update the build's current repository: 'auto-cli-virtual-X' for fetching 3rd party dependencies and pushing the resulted feature branch artifacts.
+   - 1 Local repository: <b>'auto-cli-local-X'</b> for the purpose of saving the resulting artifacts.
+   - 1 Remote repository: <b>'auto-cli-jcentral-X'</b>, pointing to https://jcenter.bintray.com.
+   - 1 Virtual repository: <b>'auto-cli-virtual-X'</b> pointing to both 'auto-cli-local-X' and to 'auto-cli-jcentral-X', the CI server will use the URL for this repository.
+3. Update the build's current repository: <b>'auto-cli-virtual-X'</b> for fetching 3rd party dependencies and pushing the resulted feature branch artifacts.
 
 <img src="https://i.ibb.co/h8Gxp8L/Screen-Shot-2020-06-21-at-22-32-06.png" alt="alt text" width="380" height="250">
 
@@ -57,7 +57,7 @@ We will create a CI process that will be triggered for non-master pull requests 
         jfrog rt mvnc --server-id-resolve=tal-personal-arti --server-id-deploy=tal-personal-arti --repo-resolve-releases=auto-cli-virtual-$repository --repo-resolve-snapshots=auto-cli-virtual-$repository --repo-deploy-releases=auto-cli-virtual-$repository --repo-deploy-snapshots=auto-cli-virtual-$repository    
 ```
 
-With this following mechanism we are achieving the following advantages:
+With this following mechanism we are achieving the following <b>advantages</b>:
 1) Isolation
 2) "Clean" Dependencies per feature - only the needed dependencies will be stored (not twice, Artifactory is a checksum based storage - https://jfrog.com/article/checksum-based-storage/)
 3) Deploy your application without "outside noise"
