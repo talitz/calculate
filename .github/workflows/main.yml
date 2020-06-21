@@ -78,7 +78,7 @@ jobs:
     - if: always()
       name: Feature Branch Repository Deletion
       env:
-        NUMBER_OF_MONTHS_TO_KEEP: ${{ secrets.JF_ARTIFACTORY_SECRET_1 }}
+        NUMBER_OF_MONTHS_TO_KEEP: 3
       run: |
         # Extract all the repositories & Filter the repositories created automatically by the CI process
         jfrog rt curl -XGET /api/repositories | jq '[.[] | .key | select(test("auto-cli"))]' > deletion/auto_created_repositories.json
