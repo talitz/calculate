@@ -60,20 +60,21 @@ jobs:
         # Extract all the repositories & Filter the repositories created automatically by the CI process
         jfrog rt curl -XGET /api/repositories | jq '[.[] | .key | select(test("auto-cli"))]' > deletion/auto_created_repositories.json
 
+        # Print all repositories
+        jq -c '.[]' deletion/auto_created_repositories.json | while read i; do
+          echo $i
+        done
+
         # Iterate over all the repositories, delete those by the latest file that was modified
         #jq -c '.[]' deletion/auto_created_repositories.json | while read i; do
           # If latest modified file was > 1 day => DELETE the repository
-          if [ $(jfrog rt s --spec deletion/repositories-spec.json --spec-vars='key1="auto-cli-virtual-lirans-feature"' | jq '.[] | .created | . > "2010-01-25"') = "true" ]; then
+          if [ $(jfrog rt s --spec deletion/repositories-spec.json --spec-vars='key1="auto-cli-local-sunday-funday"' | jq '.[] | .created | . > "2010-01-25"') = "true" ]; then
              echo "Deleting the repository, too old to keep in Artifactory"
-             jfrog rt rdel auto-cli-local-lirans-feature --quiet
-             jfrog rt rdel auto-cli-virtual-lirans-feature --quiet
+             jfrog rt rdel auto-cli-local-sunday-funday --quiet
+             jfrog rt rdel auto-cli-virtual-sunday-funday --quiet
           else
              echo "Skipping Repository deletion - repository is still relevant"
           fi
-        #done
-
-        #jq -c '.[]' deletion/auto_created_repositories.json | while read i; do
-        #  echo $i
         #done
     
     - if: always()
