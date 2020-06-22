@@ -73,20 +73,15 @@ jobs:
       name: Xray Scan
       run: |
         jfrog rt bs
- 
 
-
-    # if pushed from a master branch, should delete the proper repository in artifactory
     - if: always()
       name: Feature Branch Repository Deletion
       env:
         NUMBER_OF_DAYS_TO_KEEP: 1
+        MONTHS_INDICATOR: ${{ jq -n 'now - 3600 * 24 * '$NUMBER_OF_DAYS_TO_KEEP' | gmtime | todate' }}
       run: |
         # Extract all the repositories & Filter the repositories created automatically by the CI process
         jfrog rt curl -XGET /api/repositories | jq '[.[] | .key | select(test("auto-cli"))]' > deletion/auto_created_repositories.json
-
-        # Calculate for which month are we going back to verify who should be deleted
-        jq -n 'now - 3600 * 24 * '$NUMBER_OF_DAYS_TO_KEEP' | gmtime | todate' > deletion/months_indicator && cat deletion/months_indicator
 
         # Iterate over all the repositories, delete those by the latest file that was modified
         jq -c '.[]' deletion/auto_created_repositories.json | while read i; do
@@ -96,7 +91,7 @@ jobs:
           # If the repository is empty / latest modified file is older > NUMBER_OF_DAYS_TO_KEEP days
           # => DELETE the repository
           if [[ $(cat deletion/search_results) == "[]" || 
-                $(cat deletion/search_results | jq --arg month_indicator $(cat deletion/months_indicator) '.[] | .modified | . <= $month_indicator') = "true" ]]; then
+                $(cat deletion/search_results | jq '.[] | .modified | . <= '$MONTHS_INDICATOR'') = "true" ]]; then
              echo "Deleting repository: $i, too old to keep in Artifactory"
              jfrog rt rdel $i --quiet
           else
