@@ -100,7 +100,7 @@ The step is as following:
         done              
 ```
 
-And the full pipeline:
-<img src="https://i.ibb.co/k6Mc7cQ/Screen-Shot-2020-06-22-at-20-04-58.png" alt="alt text" width="280" height="700">
+And the full pipeline: \n
+<img src="https://i.ibb.co/k6Mc7cQ/Screen-Shot-2020-06-22-at-20-04-58.png" alt="alt text" width="240" height="500">
 
 The full code for this pipeline is available at: https://github.com/talitz/calculate-with-github-actions/blob/master/.github/workflows/main.yml.
