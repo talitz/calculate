@@ -73,14 +73,11 @@ jobs:
       name: Xray Scan
       run: |
         jfrog rt bs
- 
 
-
-    # if pushed from a master branch, should delete the proper repository in artifactory
     - if: always()
       name: Feature Branch Repository Deletion
       env:
-        NUMBER_OF_DAYS_TO_KEEP: 1
+        NUMBER_OF_DAYS_TO_KEEP: 90
       run: |
         # Extract all the repositories & Filter the repositories created automatically by the CI process
         jfrog rt curl -XGET /api/repositories | jq '[.[] | .key | select(test("auto-cli"))]' > deletion/auto_created_repositories.json
@@ -98,7 +95,7 @@ jobs:
           if [[ $(cat deletion/search_results) == "[]" || 
                 $(cat deletion/search_results | jq --arg month_indicator $(cat deletion/months_indicator) '.[] | .modified | . <= $month_indicator') = "true" ]]; then
              echo "Deleting repository: $i, too old to keep in Artifactory"
-             jfrog rt rdel $i --quiet
+             sh -c "jfrog rt rdel $i --quiet"
           else
              echo "Skipping Repository deletion - repository is still relevant"
           fi
