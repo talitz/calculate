@@ -64,18 +64,12 @@ With this following mechanism we are achieving the following <b>advantages</b>:
 4) Configure a specific watch on the build using Xray
 
 ## Scaling Up
-But is this solution scalable? What happens when we grow, and develop hundreds of features? that creates quite a mess in artifactory. Some features might get old and not relevant, pushed way back to master and can be deleted. Well, we have a solution for that as well.
+Is this solution scalable? What happens when we grow, and develop hundreds of features? that creates quite a mess in Artifactory. Some features might get old and not relevant, pushed way back to master and can be deleted. Well, we have a solution for that as well.
 
-Delete Old Repositoreis Mechanism.
-
-1. Extract all the repositories & Filter the repositories created automatically by the CI process
-2. Calculate for which month are we going back to verify who should be deleted
-3. Iterate over all the repositories, delete those by the latest file that was modified
-  3.1. If the repository is empty / latest modified file is older > NUMBER_OF_DAYS_TO_KEEP days
-          3.1.1. DELETE the repository
+Delete Old Repositoreis Mechanism can be an extra step in the CI, that will be responsible to delete old repositories by a parameter configured with NUMBER_OF_DAYS_TO_KEEP.
+For NUMBER_OF_DAYS_TO_KEEP=90, all repositories that their last modified file is before 3 months, will be deleted.
           
-          
-
+The step is as following:
 ```shell  
     - if: always()
       name: Feature Branch Repository Deletion
