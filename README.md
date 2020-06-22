@@ -66,15 +66,16 @@ With this following mechanism we are achieving the following <b>advantages</b>:
 ## Scaling Up
 Is this solution scalable? What happens when we grow, and develop hundreds of features? that creates quite a mess in Artifactory. Some features might get old and not relevant, pushed way back to master and can be deleted. Well, we have a solution for that as well.
 
-Delete Old Repositoreis Mechanism can be an extra step in the CI, that will be responsible to delete old repositories by a parameter configured with NUMBER_OF_DAYS_TO_KEEP.
+Delete Old Repositoreis Mechanism can be an extra step in the CI, in our example it is the last one, and will be responsible to delete old repositories by a parameter configured with NUMBER_OF_DAYS_TO_KEEP.
 For NUMBER_OF_DAYS_TO_KEEP=90, all repositories that their last modified file is before 3 months, will be deleted.
           
 The step is as following:
 ```shell  
+
     - if: always()
       name: Feature Branch Repository Deletion
       env:
-        NUMBER_OF_DAYS_TO_KEEP: 1
+        NUMBER_OF_DAYS_TO_KEEP: 90
       run: |
         # Extract all the repositories & Filter the repositories created automatically by the CI process
         jfrog rt curl -XGET /api/repositories | jq '[.[] | .key | select(test("auto-cli"))]' > deletion/auto_created_repositories.json
@@ -92,12 +93,17 @@ The step is as following:
           if [[ $(cat deletion/search_results) == "[]" || 
                 $(cat deletion/search_results | jq --arg month_indicator $(cat deletion/months_indicator) '.[] | .modified | . <= $month_indicator') = "true" ]]; then
              echo "Deleting repository: $i, too old to keep in Artifactory"
-             jfrog rt rdel $i --quiet
+             sh -c "jfrog rt rdel $i --quiet"
           else
              echo "Skipping Repository deletion - repository is still relevant"
           fi
-        done         
+        done              
 ```
+
+And the full pipeline:
+
+
+
 The full code for this pipeline is available at: https://github.com/talitz/calculate-with-github-actions/blob/master/.github/workflows/main.yml.
 
 
