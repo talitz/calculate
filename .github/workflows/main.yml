@@ -90,7 +90,7 @@ jobs:
         # Iterate over all the repositories, delete those by the latest file that was modified
         jq -c '.[]' deletion/auto_created_repositories.json | while read i; do
           echo Iterating repository = $i
-          sh -c jfrog rt s --spec deletion/repositories-spec.json --spec-vars='key1="$i"' > deletion/search_results && cat deletion/search_results
+          sh -c "jfrog rt s --spec deletion/repositories-spec.json --spec-vars='key1="$i"' > deletion/search_results && cat deletion/search_results"
           
           # If the repository is empty / latest modified file is older > NUMBER_OF_DAYS_TO_KEEP days => DELETE the repository
           if [[ $(cat deletion/search_results) == "[]" ]]; then
