@@ -71,10 +71,10 @@ jobs:
         # Publish build info
         jfrog rt bp       
         
-    - if: always()
-      name: Xray Scan
-      run: |
-        jfrog rt bs
+    #- if: always()
+    #  name: Xray Scan
+    #  run: |
+    #    jfrog rt bs
 
     - if: always()
       name: Feature Branch Repository Deletion
