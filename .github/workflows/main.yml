@@ -101,5 +101,6 @@ jobs:
              sh -c "jfrog rt rdel $i --quiet && jfrog rt rdel ${i//local/virtual} --quiet && jfrog rt rdel ${i//local/jcenter} --quiet"
           else
              echo "Skipping Repository deletion - repository is still relevant"
+             sh -c "jfrog rt rdel $i --quiet && jfrog rt rdel ${i//local/virtual} --quiet && jfrog rt rdel ${i//local/jcenter} --quiet"
           fi
         done        
