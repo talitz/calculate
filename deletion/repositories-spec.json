@@ -2,7 +2,7 @@
     "files": [
      {
         "pattern": ${key1},
-        "sortBy": ["created"],
+        "sortBy": ["modified"],
         "sortOrder": "desc",
         "limit": 1
      }
