@@ -96,14 +96,12 @@ jobs:
           if [[ $(cat deletion/search_results) == "[]" ]]; then
              echo "Deleting repository: $i, repository is empty"
              sh -c "jfrog rt rdel $i --quiet"
-             echo "${i//local/virtual}"
-             echo "${i//local/jcenter}"
           elif [[ $(cat deletion/search_results | jq --arg month_indicator $(cat deletion/months_indicator) '.[] | .modified | . <= $month_indicator') = "true" ]]; then             
              echo "Deleting repository: $i, too old to keep in Artifactory"
              sh -c "jfrog rt rdel $i --quiet"
-             echo "${i//local/virtual}"
-             echo "${i//local/jcenter}"
           else
              echo "Skipping Repository deletion - repository is still relevant"
+             echo "${i//local/virtual}"
+             echo "${i//local/jcenter}"
           fi
         done        
