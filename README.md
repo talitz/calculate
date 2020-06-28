@@ -7,7 +7,7 @@
 - [Background](#background)
 - [The Problem](#theproblem)
 - [The Solution](#thesolution)
-- [Scaling Up](#scalingup)
+- [Scaling Up](#scalingup) 
  
 ## Background
 Imagine a world in which liquid software flows to systems and devices for secure and automatic continuous updates. JFrog offers many automation tools that can assist you on achiving this vision like our REST API, User Plugins and the JFrog CLI.
