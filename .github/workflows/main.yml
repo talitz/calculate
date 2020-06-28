@@ -71,15 +71,15 @@ jobs:
         # Publish build info
         jfrog rt bp       
         
-    #- if: always()
-    #  name: Xray Scan
-    #  run: |
-    #    jfrog rt bs
+    - if: always()
+      name: Xray Scan
+      run: |
+        jfrog rt bs
 
     - if: always()
       name: Feature Branch Repository Deletion
       env:
-        NUMBER_OF_DAYS_TO_KEEP: 1
+        NUMBER_OF_DAYS_TO_KEEP: 90
       run: |
         # Extract all the LOCAL repositories created automatically by the CI process
         jfrog rt curl -XGET /api/repositories | jq '[.[] | .key | select(test("auto-cli-local"))]' > deletion/auto_created_repositories.json && cat deletion/auto_created_repositories.json
@@ -101,6 +101,5 @@ jobs:
              sh -c "jfrog rt rdel $i --quiet && jfrog rt rdel ${i//local/virtual} --quiet && jfrog rt rdel ${i//local/jcenter} --quiet"
           else
              echo "Skipping Repository deletion - repository is still relevant"
-             sh -c "jfrog rt rdel $i --quiet && jfrog rt rdel ${i//local/virtual} --quiet && jfrog rt rdel ${i//local/jcenter} --quiet"
           fi
         done        
