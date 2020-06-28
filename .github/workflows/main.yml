@@ -48,7 +48,6 @@ jobs:
         jfrog rt rc templates/remote-repo-template.json --vars key1=$repository
         jfrog rt rc templates/virtual-repo-template.json --vars key1=$repository
   
-
     - if: always()   
       name: Feature Branch Repository Update
       env:
