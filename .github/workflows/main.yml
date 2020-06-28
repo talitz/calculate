@@ -61,7 +61,7 @@ jobs:
       name: Build & Deploy
       run: jfrog rt mvn clean install -f maths/pom.xml
         
-    - if: always()
+    - if: always() 
       name: Publish Build Information
       run: |
         # Collect environment variables for the build
