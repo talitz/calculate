@@ -1,9 +1,107 @@
-[
-  {
-    "path": "auto-cli-local-last-feature/com/dineshvelhal/javaprojects/maths-app/maven-metadata.xml",
-    "type": "file",
-    "size": 393,
-    "created": "2020-06-28T08:37:20.205Z",
-    "modified": "2020-06-28T08:37:20.189Z"
-  }
-]
+Incorrect Usage. flag provided but not defined: -server-id-resolve
+
+NAME:
+   jfrog rt - Artifactory commands
+
+USAGE:
+   jfrog rt command [command options][arguments...]
+
+COMMANDS:
+   config, c                       Configure Artifactory details.
+   use                             Set the active Artifactory server by its ID.
+   upload, u                       Upload files.
+   download, dl                    Download files.
+   move, mv                        Move files.
+   copy, cp                        Copy files.
+   delete, del                     Delete files.
+   search, s                       Search files.
+   set-props, sp                   Set properties on existing files in Artifactory.
+   delete-props, delp              Delete properties on existing files in Artifactory.
+   build-publish, bp               Publish build info.
+   build-collect-env, bce          Collect environment variables. Environment variables can be excluded using the build-publish command.
+   build-add-dependencies, bad     Adds dependencies from the local file-system to the build info.
+   build-add-git, bag              Collect VCS details from git and add them to a build.
+   build-scan, bs                  This command is used to perform Xray scan on a build.
+   build-clean, bc                 This command is used to clean (remove) build info collected locally.
+   build-promote, bpr              This command is used to promote build in Artifactory.
+   build-distribute, bd            This command is used to deploy builds from Artifactory to Bintray, and creates an entry in the corresponding Artifactory distribution repository specified.
+   build-discard, bdi              Discard builds by setting retention parameters.
+   git-lfs-clean, glc              Clean files from a Git LFS repository. The command deletes all files from a Git LFS repository that are no longer available in a corresponding Git repository.
+   mvn-config, mvnc                Generate maven build configuration.
+   mvn                             Run Maven build.
+   gradle-config, gradlec          Generate gradle build configuration.
+   gradle                          Run Gradle build.
+   docker-push, dp                 Docker push.
+   docker-pull, dpl                Docker pull.
+   npm-config, npmc                Generate go build configuration.
+   npm-install, npmi               Run npm install.
+   npm-ci, npmci                   Run npm ci.
+   npm-publish, npmp               Packs and deploys the npm package to the designated npm repository.
+   nuget-config, nugetc            Generate go build configuration.
+   nuget                           Run NuGet.
+   nuget-deps-tree, ndt            Show solution dependency tree.
+   go-config                       Generate go build configuration.
+   go-publish, gp                  Publish go package and/or its dependencies to Artifactory
+   go, go                          Runs go
+   go-recursive-publish, grp       Recursively discovers all project dependencies, both direct and indirect, and publishes them to Artifactory
+   ping, p                         Send applicative ping to Artifactory
+   curl, cl                        Execute a cUrl command, using the configured Artifactory details.
+   pip-config, pipc                Generate pip build configuration.
+   pip-install, pipi               Run pip install.
+   release-bundle-create, rbc      Create a release bundle.
+   release-bundle-update, rbu      Updates an existing unsigned release bundle version.
+   release-bundle-sign, rbs        Sign a release bundle.
+   release-bundle-distribute, rbd  Distribute a release bundle.
+   release-bundle-delete, rbdel    Delete a release bundle.
+   repo-template, rpt              Create a JSON template for repository creation or update.
+   repo-create, rc                 Create a new repository in Artifactory.
+   repo-update, ru                 Update an exiting repository configuration in Artifactory.
+   repo-delete, rdel               Permanently delete a repository with all of its content from Artifactory.
+   replication-template, rplt      Create a JSON template for creation replication repository.
+   replication-create, rplc        Create a new replication in Artifactory.
+   replication-delete, rpldel      Remove a replication repository from Artifactory.
+   help, h                         Shows a list of commands or help for one command
+   
+OPTIONS:
+   --help, -h  show help
+   
+Environment Variables:
+  JFROG_CLI_LOG_LEVEL
+    [Default: INFO]
+    This variable determines the log level of the JFrog CLI.
+    Possible values are: INFO, ERROR, and DEBUG.
+    If set to ERROR, JFrog CLI logs error messages only.
+    It is useful when you wish to read or parse the JFrog CLI output and do not want any other information logged.
+
+  JFROG_CLI_OFFER_CONFIG
+    [Default: true]
+    If true, JFrog CLI prompts for product server details and saves them in its config file.
+    To avoid having automation scripts interrupted, set this value to false, and instead,
+    provide product server details using the config command.
+
+  JFROG_CLI_HOME_DIR
+    [Default: ~/.jfrog]
+    Defines the JFrog CLI home directory path.
+
+  JFROG_CLI_TEMP_DIR
+    [Default: The operating system's temp directory]
+    Defines the temp directory used by JFrog CLI.
+
+  JFROG_CLI_BUILD_NAME
+    Build name to be used by commands which expect a build name, unless sent as a command argument or option.
+  
+  JFROG_CLI_BUILD_NUMBER
+    Build number to be used by commands which expect a build number, unless sent as a command argument or option.
+
+  JFROG_CLI_BUILD_URL
+    Sets the CI server build URL in the build-info. The "jfrog rt build-publish" command uses the value of this environment variable, unless the --build-url command option is sent.
+  
+  JFROG_CLI_ENV_EXCLUDE
+    [Default: *password*;*secret*;*key*;*token*] 
+    List of case insensitive patterns in the form of "value1;value2;...". Environment variables match those patterns will be excluded. This environment variable is used by the "jfrog rt build-publish" command, in case the --env-exclude command option is not sent.
+
+  CI
+    [Default: false]
+    If true, disables interactive prompts and progress bar.
+    
+
