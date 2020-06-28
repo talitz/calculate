@@ -1,4 +1,4 @@
-# Repository Management with the JFrog CLI
+# Automate Repository Management with the JFrog CLI
 
 <img src="https://i.ibb.co/pd6Fqqq/Blog-post-Go-Center-04.jpg" alt="alt text" width="600" height="200">
 
