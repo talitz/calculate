@@ -49,7 +49,7 @@ jobs:
         jfrog rt rc templates/virtual-repo-template.json --vars key1=$repository
   
 
-    - if: always()
+    - if: always() 
       name: Feature Branch Repository Update
       env:
         SERVER_ID: tal-eplus-saas
