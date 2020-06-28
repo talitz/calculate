@@ -95,13 +95,11 @@ jobs:
           # If the repository is empty / latest modified file is older > NUMBER_OF_DAYS_TO_KEEP days => DELETE the repository
           if [[ $(cat deletion/search_results) == "[]" ]]; then
              echo "Deleting repository: $i, repository is empty"
-             sh -c "jfrog rt rdel $i --quiet"
+             sh -c "jfrog rt rdel $i --quiet && jfrog rt rdel ${i//local/virtual} --quiet && jfrog rt rdel ${i//local/jcenter} --quiet"
           elif [[ $(cat deletion/search_results | jq --arg month_indicator $(cat deletion/months_indicator) '.[] | .modified | . <= $month_indicator') = "true" ]]; then             
              echo "Deleting repository: $i, too old to keep in Artifactory"
-             sh -c "jfrog rt rdel $i --quiet"
+             sh -c "jfrog rt rdel $i --quiet && jfrog rt rdel ${i//local/virtual} --quiet && jfrog rt rdel ${i//local/jcenter} --quiet"
           else
              echo "Skipping Repository deletion - repository is still relevant"
-             echo "${i//local/virtual}"
-             echo "${i//local/jcenter}"
           fi
         done        
