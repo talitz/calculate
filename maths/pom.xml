@@ -13,8 +13,8 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <project.repository.name>libs-release</project.repository.name>
-    <project.distribution.url>https://tal.jfrog.io/artifactory/${project.repository.name}</project.distribution.url>
+    <project.repository.name>project-repository-name</project.repository.name>
+    <project.distribution.url>projecet-distribution-url</project.distribution.url>
   </properties>
   
   <distributionManagement>
