@@ -58,7 +58,9 @@ jobs:
      
     - if: always()
       name: Build & Deploy
-      run: jfrog rt mvn clean install -f maths/pom.xml
+      run: | 
+        jfrog mvnc
+        jfrog rt mvn clean install
         
     - if: always() 
       name: Publish Build Information

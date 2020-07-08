@@ -20,7 +20,7 @@
   <distributionManagement>
       <repository>
           <id>central</id>
-          <name>artifactory-primary-0-releases</name>
+          <name>artifactory</name>
           <url>${project.distribution.url}</url> 
       </repository>
   </distributionManagement>
