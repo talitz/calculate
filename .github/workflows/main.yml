@@ -59,7 +59,7 @@ jobs:
     - if: always()
       name: Build & Deploy
       run: | 
-        jfrog mvnc
+        jfrog rt mvnc
         jfrog rt mvn clean install
         
     - if: always() 
