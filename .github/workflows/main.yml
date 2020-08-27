@@ -77,6 +77,11 @@ jobs:
         jfrog rt bs
 
     - if: always()
+      name: Build Promotion
+      run: |
+        jfrog rt bpr ${GITHUB_RUN_ID} libs-release 
+        
+    - if: always()
       name: Feature Branch Repository Deletion
       env:
         NUMBER_OF_DAYS_TO_KEEP: 90
