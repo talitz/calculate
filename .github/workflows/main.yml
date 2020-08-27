@@ -79,7 +79,7 @@ jobs:
     - if: always()
       name: Build Promotion
       run: |
-        jfrog rt bpr ${GITHUB_SHA} libs-release 
+        jfrog rt bpr calculate-ci-job ${GITHUB_SHA} libs-release 
         
     - if: always()
       name: Feature Branch Repository Deletion
